@@ -26,7 +26,8 @@ public class ClienteDaoImp implements ClienteDao{
 	public int create(Cliente u) {
 		// TODO Auto-generated method stub
 		String sql = "INSERT INTO usuario(idusuario,nom_user,clave,estado) values(null,?,?,?)";
-		return jdbcTemplate.update(sql);
+		return jdbcTemplate.update("call Cliente_sp_Crear(?,?,?,?,?,?,?)",u.getNom()
+				);
 	}
 
 	@Override
