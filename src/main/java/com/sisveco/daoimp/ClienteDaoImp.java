@@ -1,15 +1,19 @@
 package com.sisveco.daoimp;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.SingleColumnRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Repository;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sisveco.dao.ClienteDao;
 import com.sisveco.entity.Cliente;
 @Repository
@@ -72,8 +76,19 @@ public class ClienteDaoImp implements ClienteDao{
 		SimpleJdbcCall sjc = new SimpleJdbcCall(jdbcTemplate).withProcedureName("Cliente_sp_Mostrar")
 				.returningResultSet("clientes",new ClienteRowMapper());
 		Map<String,Object> out =  sjc.execute();
+		System.out.println();
 		
-		return  (List<Map<String,Object>>) out.get("clientes");
+		List<Cliente> lista = (List<Cliente>) out.get("clientes");
+		List<Map<String, Object>> list = new ArrayList<>();
+		for(int n=0;n<lista.size();n++) {
+			Cliente cli = lista.get(n);
+			ObjectMapper om = new ObjectMapper();
+			Map<String, Object> maper= om.convertValue(cli,Map.class) ;
+			list.add(maper);
+		}
+		
+		
+		return   null;
 	}
 
 }

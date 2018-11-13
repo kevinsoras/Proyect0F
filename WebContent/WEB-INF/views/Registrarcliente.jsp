@@ -79,28 +79,25 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nombre</th>
-      <th scope="col">Apellido</th>
-      <th scope="col">Dni</th>
-            <th scope="col">Direccion</th>
-      <th scope="col">Celular</th>
-            <th colspan="2">Acciones</th>
+      <th colspan="2">Acciones</th>
 
 
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Menian</td>
-      <td>Navarro tito</td>
-      <td>74372091</td>
-      <td>Jr.Cuzco 7 Cuadra</td>
-      <td>990512061</td>
-      <td>  <button type="button" class="btn btn-primary">Modificar</button>
-        <button type="button" class="btn btn-danger">Eliminar</button>
-</td>
-     
-    </tr>
+  	<c:forEach items="${lista}" var="cliente">
+	  	<tr>
+	      <th scope="row">1</th>
+	      <td>${cliente.nom}</td>
+	      <td>  <button type="button" class="btn btn-primary">Modificar</button></td>
+	      <td>  <button type="button" class="btn btn-danger">Eliminar</button></td>
+			
+	     
+	    </tr>
+  	
+  	
+  	</c:forEach>
+    
    
   </tbody>
 </table>

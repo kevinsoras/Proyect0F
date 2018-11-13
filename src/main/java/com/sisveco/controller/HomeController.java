@@ -43,10 +43,7 @@ public String pedidodecompra() {
 public String pedidoventa() {
 	return "pedidoventa";
 }
-@GetMapping("/Registrarcliente")
-public String Registrarcliente() {
-	return "Registrarcliente";
-}
+
 @GetMapping("/registrarfacturacompra")
 public String registrarfacturacompra() {
 	return "registrarfacturacompra";

@@ -12,7 +12,6 @@ import com.sisveco.entity.Usuario;
 import com.sisveco.service.UsuarioService;
 
 
-
 public class UsuarioServiceImp implements UsuarioService{
 	@Autowired
 	private UsuarioDao usuarioDao;

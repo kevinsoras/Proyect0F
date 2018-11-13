@@ -44,7 +44,7 @@
                   </div>
                   <div class="mr-5">Cliente</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="Registrarcliente.html">
+                <a class="card-footer text-white clearfix small z-1" href="cliente/Registrarcliente.html">
                   <span class="float-left">Ver Detalles</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
