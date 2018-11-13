@@ -69,10 +69,11 @@ public class ClienteDaoImp implements ClienteDao{
 	@Override
 	public List<Map<String, Object>> readAll() {
 		// TODO Auto-generated method stub
-		SimpleJdbcCall sjc = new SimpleJdbcCall(jdbcTemplate).withProcedureName("Cliente_sp_Mostrar").;
-		List<Map<String,Object>> out =  sjc.execute(new Map<String,Object>);
+		SimpleJdbcCall sjc = new SimpleJdbcCall(jdbcTemplate).withProcedureName("Cliente_sp_Mostrar")
+				.returningResultSet("clientes",new ClienteRowMapper());
+		Map<String,Object> out =  sjc.execute();
 		
-		return  out;
+		return  (List<Map<String,Object>>) out.get("clientes");
 	}
 
 }
