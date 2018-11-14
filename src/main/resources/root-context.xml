@@ -27,4 +27,7 @@
 	<bean id="clienteDaoImp" class="com.sisveco.daoimp.ClienteDaoImp"> 
 		<property name="jdbcTemplate" ref="jdbcTemplate" /> 
 	</bean>
+	<bean id="rolDaoImp" class="com.sisveco.daoimp.RolDaoImp"> 
+		<property name="jdbcTemplate" ref="jdbcTemplate" /> 
+	</bean>
 </beans>
