@@ -69,7 +69,6 @@ public class ClienteDaoImp implements ClienteDao{
 				.returningResultSet("clientes",new ClienteRowMapper());
 		Map<String,Object> out =  sjc.execute();
 		System.out.println();
-		
 		List<Cliente> lista = (List<Cliente>) out.get("clientes");
 		List<Map<String, Object>> list = new ArrayList<>();
 		for(int n=0;n<lista.size();n++) {
@@ -78,9 +77,6 @@ public class ClienteDaoImp implements ClienteDao{
 			Map<String, Object> maper= om.convertValue(cli,Map.class) ;
 			list.add(maper);
 		}
-		
-		
 		return   list;
 	}
-
 }
