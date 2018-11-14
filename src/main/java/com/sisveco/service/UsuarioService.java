@@ -13,6 +13,4 @@ public interface UsuarioService {
 	 public int delete(int id);
 	 public Usuario read(int id);
 	 public List<Map<String,Object>> readAll();
-	 //hola b
-	 //asd
 }

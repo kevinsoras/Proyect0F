@@ -1,22 +1,15 @@
 package com.sisveco.daoimp;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.sisveco.dao.UsuarioDao;
-import com.sisveco.entity.Usuario;
+import com.sisveco.dao.ControlDao;
+import com.sisveco.entity.Control;
 
-public class UsuarioDaoImp implements UsuarioDao {
+public class ControlDaoImp implements ControlDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	public JdbcTemplate getJdbcTemplate() {
@@ -28,19 +21,13 @@ public class UsuarioDaoImp implements UsuarioDao {
 	}
 
 	@Override
-	public HashMap<String, Object> validar(String x, String y) {
-		// TODO Auto-generated method stub
-        return map;
-	}
-
-	@Override
-	public int create(Usuario u) {
+	public int create(Control co) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int update(Usuario u) {
+	public int update(Control co) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -52,15 +39,9 @@ public class UsuarioDaoImp implements UsuarioDao {
 	}
 
 	@Override
-	public Usuario read(int key) {
+	public Control read(int key) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public boolean search(String user) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override

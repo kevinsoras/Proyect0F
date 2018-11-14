@@ -30,4 +30,19 @@
 	<bean id="rolDaoImp" class="com.sisveco.daoimp.RolDaoImp"> 
 		<property name="jdbcTemplate" ref="jdbcTemplate" /> 
 	</bean>
+	<bean id="categoriaDaoImp" class="com.sisveco.daoimp.CategoriaDaoImp"> 
+		<property name="jdbcTemplate" ref="jdbcTemplate" /> 
+	</bean>
+	<bean id="controlDaoImp" class="com.sisveco.daoimp.ControlDaoImp"> 
+		<property name="jdbcTemplate" ref="jdbcTemplate" /> 
+	</bean>
+	<bean id="pedidocompraDaoImp" class="com.sisveco.daoimp.PedidoCompraDaoImp"> 
+		<property name="jdbcTemplate" ref="jdbcTemplate" /> 
+	</bean>
+	<bean id="proveedorDaoImp" class="com.sisveco.daoimp.ProveedorDaoImp"> 
+		<property name="jdbcTemplate" ref="jdbcTemplate" /> 
+	</bean>
+	<bean id="usuarioDaoImp" class="com.sisveco.daoimp.UsuarioDaoImp"> 
+		<property name="jdbcTemplate" ref="jdbcTemplate" /> 
+	</bean>
 </beans>
