@@ -8,13 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sisveco.dao.UsuarioDao;
+import com.sisveco.daoimp.UsuarioDaoImp;
 import com.sisveco.entity.Usuario;
 import com.sisveco.service.UsuarioService;
 
 
 public class UsuarioServiceImp implements UsuarioService{
 	@Autowired
-	private UsuarioDao usuarioDao;
+	private UsuarioDaoImp usuarioDao;
 
 	@Override
 	public int create(Usuario user) throws SQLException {

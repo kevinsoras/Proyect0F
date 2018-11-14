@@ -54,20 +54,12 @@ public class ClienteDaoImp implements ClienteDao{
 	@Override
 	public Cliente read(int key) {
 		// TODO Auto-generated method stub
-		SimpleJdbcCall sjc = new SimpleJdbcCall(jdbcTemplate).withProcedureName("Cliente_sp_Leer");
-		SqlParameterSource in = new MapSqlParameterSource().addValue("idcliente", key);
+		SimpleJdbcCall sjc = new SimpleJdbcCall(jdbcTemplate).withProcedureName("Cliente_sp_Leer")
+				.returningResultSet("clientes",new ClienteRowMapper());
+		SqlParameterSource in = new MapSqlParameterSource().addValue("idc", key);
 		Map<String,Object> out = sjc.execute(in);
-		Cliente cliente = new Cliente();
-			cliente.setIdcli((Integer)out.get("idcliente"));
-			cliente.setApell((String) out.get("apellidos"));
-			cliente.setCel((String) out.get("celular"));
-			cliente.setDirec((String) out.get("direccion"));
-			cliente.setDni((Integer)out.get("dni"));
-			cliente.setEstad((String)out.get("estado"));
-			cliente.setNom((String)out.get("nombre"));
-			cliente.setRaz_soc((String)out.get("razon_social"));
-			cliente.setRucc((String)out.get("ruc"));
-		return cliente;
+		List<Cliente> cli = (List<Cliente>) out.get("clientes");
+		return cli.get(0);
 	}
 
 	@Override
@@ -88,7 +80,7 @@ public class ClienteDaoImp implements ClienteDao{
 		}
 		
 		
-		return   null;
+		return   list;
 	}
 
 }
