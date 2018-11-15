@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sisveco.entity.Cliente;
@@ -15,17 +16,31 @@ import com.sisveco.serviceImp.ClienteServiceImp;
 @Controller
 @RequestMapping("/cliente")
 public class ClienteController {
+	private int id;
 	@Autowired
 	private ClienteServiceImp csi;
 	@GetMapping("/Registrarcliente")
+	
 	public String Registrarcliente() {
 		return "Registrarcliente";
 	}
 	@GetMapping("/ClienteLista")
-	public ModelAndView ListarCliente() {
+	public ModelAndView ListarCliente(Model mo) {
 		ModelAndView ma = new ModelAndView();
 		ma.setViewName("Registrarcliente");
+		mo.addAttribute("modal",false);
 		ma.addObject("lista",csi.readAll());
+		return ma;
+	}
+	@GetMapping("/ClienteListatrue")
+	public ModelAndView ListarTrueCliente(  Model model) {
+		
+		ModelAndView ma = new ModelAndView();
+		Cliente c = csi.read(id);
+		ma.setViewName("Registrarcliente");
+		ma.addObject("lista",csi.readAll());
+		
+		ma.addObject("modal",true);
 		return ma;
 	}
 	@GetMapping("/del/{id}")
@@ -36,11 +51,10 @@ public class ClienteController {
 	}
 	@GetMapping("/read/{id}")
 	public String ClienteReaD(Model model, @PathVariable("id") int idcli) {
-		Cliente c = csi.read(idcli);
-		System.out.println("nooldawd"+idcli);
-		model.addAttribute("cliente",c);
-		model.addAttribute("modal",c.getDirec());
-		return "redirect:/cliente/ClienteLista";
+		
+		model.addAttribute("prueba","carlos");
+		id=idcli;
+		return "redirect:/cliente/ClienteListatrue";
 	}
 	@GetMapping("/upd")
 	public String ClienteUpdate(Model model, @ModelAttribute("cliente") Cliente cliente) {

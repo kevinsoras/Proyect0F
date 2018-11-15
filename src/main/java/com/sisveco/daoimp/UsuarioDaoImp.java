@@ -30,7 +30,7 @@ public class UsuarioDaoImp implements UsuarioDao {
 	@Override
 	public HashMap<String, Object> validar(String x, String y) {
 		// TODO Auto-generated method stub
-        return map;
+        return null;
 	}
 
 	@Override

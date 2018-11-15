@@ -102,7 +102,7 @@
 									<td>${cliente.cel}</td>
 									<td>${cliente.rucc}</td>
 									<td>${cliente.raz_soc}</td>
-									<td><a id="modal" href="read/${cliente.idcli}" style="color: blue;" data-toggle="modal" data-target="#exampleModal"><i
+									<td><a id="modal" href="read/${cliente.idcli}" style="color: blue;" ><i
 											class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
 									<td><a href="del/${cliente.idcli}" style="color: red;"><i
 											class="fa fa-trash" aria-hidden="true"></i></a></td>
@@ -132,7 +132,7 @@
 								<div class="modal-body">
 									<form:form method="POST" action="/upd"
 										modelAttribute="cliente">
-										<p> ${modal}</p>
+										<p> ${prueba}</p>
 									</form:form>
 								</div>
 								<div class="modal-footer">
@@ -183,15 +183,25 @@
 <script src="${urlrecursos}/datatables/jquery.dataTables.js"></script>
 <script src="${urlrecursos}/datatables/dataTables.bootstrap4.js"></script>
 <script>
-var lanzar_modal = ${modal};
-$(function () {
+var modal = ${modal};
+$(function(){
+
+	if(modal===true){
+
+		$("#exampleModal").modal("show");
+		
+	}
+	
+});
+/*
+$(function(){
 
     
-    if(lanzar_modal == true){
-        $('#exampleModal').modal('show')
-    }
+    //if(lanzar_modal == true){
+        $('#exampleModal').modal('show');
+    //}
 
 
-})
+});*/
 </script>
 </html>
