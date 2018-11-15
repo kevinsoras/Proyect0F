@@ -1,5 +1,7 @@
 package com.sisveco.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,6 @@ import com.sisveco.serviceImp.ClienteServiceImp;
 @Controller
 @RequestMapping("/cliente")
 public class ClienteController {
-	private int id;
 	@Autowired
 	private ClienteServiceImp csi;
 	@GetMapping("/Registrarcliente")
@@ -28,19 +29,22 @@ public class ClienteController {
 	public ModelAndView ListarCliente(Model mo) {
 		ModelAndView ma = new ModelAndView();
 		ma.setViewName("Registrarcliente");
-		mo.addAttribute("modal",false);
+		mo.addAttribute("modal",true);
 		ma.addObject("lista",csi.readAll());
+		ma.addObject("cliente",new Cliente());
 		return ma;
 	}
 	@GetMapping("/ClienteListatrue")
-	public ModelAndView ListarTrueCliente(  Model model) {
+	public ModelAndView ListarTrueCliente( @RequestParam("idcliente") int id ,Model model) {
 		
 		ModelAndView ma = new ModelAndView();
 		Cliente c = csi.read(id);
+		System.out.println(c.getNom());
 		ma.setViewName("Registrarcliente");
-		ma.addObject("lista",csi.readAll());
-		
+		ma.addObject("cliente",c);
 		ma.addObject("modal",true);
+		ma.addObject("lista",csi.readAll());
+		model.addAttribute("nom", c.getNom());
 		return ma;
 	}
 	@GetMapping("/del/{id}")
@@ -52,8 +56,8 @@ public class ClienteController {
 	@GetMapping("/read/{id}")
 	public String ClienteReaD(Model model, @PathVariable("id") int idcli) {
 		
-		model.addAttribute("prueba","carlos");
-		id=idcli;
+		model.addAttribute("idcliente",idcli);
+		
 		return "redirect:/cliente/ClienteListatrue";
 	}
 	@GetMapping("/upd")

@@ -102,8 +102,9 @@
 									<td>${cliente.cel}</td>
 									<td>${cliente.rucc}</td>
 									<td>${cliente.raz_soc}</td>
-									<td><a id="modal" href="read/${cliente.idcli}" style="color: blue;" ><i
-											class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+									<td><a id="modal" href="read/${cliente.idcli}"
+										style="color: blue;"><i class="fa fa-pencil-square-o"
+											aria-hidden="true"></i></a></td>
 									<td><a href="del/${cliente.idcli}" style="color: red;"><i
 											class="fa fa-trash" aria-hidden="true"></i></a></td>
 
@@ -130,10 +131,23 @@
 									</button>
 								</div>
 								<div class="modal-body">
-									<form:form method="POST" action="/upd"
-										modelAttribute="cliente">
-										<p> ${prueba}</p>
+								
+									<form:form method="POST" action="/upd" modelAttribute="cliente">
+										<form:form method="POST" action="upd"
+											modelAttribute="cliente">
+											<table>
+												<tr>
+													<td><form:label path="nom">Name</form:label></td>
+													<td><form:input path="nom" /></td>
+												</tr>
+												
+												<tr>
+													<td><input type="submit" value="Submit" /></td>
+												</tr>
+											</table>
+										</form:form>
 									</form:form>
+									
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary"
@@ -183,25 +197,26 @@
 <script src="${urlrecursos}/datatables/jquery.dataTables.js"></script>
 <script src="${urlrecursos}/datatables/dataTables.bootstrap4.js"></script>
 <script>
-var modal = ${modal};
-$(function(){
-
-	if(modal===true){
-
-		$("#exampleModal").modal("show");
-		
-	}
+	var modal = ${modal};
 	
-});
-/*
-$(function(){
+	$(function() {
 
-    
-    //if(lanzar_modal == true){
-        $('#exampleModal').modal('show');
-    //}
+		if (modal === true) {
+
+			$("#exampleModal").modal("show");
+
+		}
+
+	});
+	/*
+	 $(function(){
+
+	
+	 //if(lanzar_modal == true){
+	 $('#exampleModal').modal('show');
+	 //}
 
 
-});*/
+	 });*/
 </script>
 </html>
