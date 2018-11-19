@@ -29,7 +29,7 @@ public class ClienteController {
 	public ModelAndView ListarCliente(Model mo) {
 		ModelAndView ma = new ModelAndView();
 		ma.setViewName("Registrarcliente");
-		mo.addAttribute("modal",true);
+		mo.addAttribute("modal",false);
 		ma.addObject("lista",csi.readAll());
 		ma.addObject("cliente",new Cliente());
 		return ma;
@@ -45,6 +45,13 @@ public class ClienteController {
 		ma.addObject("modal",true);
 		ma.addObject("lista",csi.readAll());
 		model.addAttribute("nom", c.getNom());
+		model.addAttribute("apell", c.getApell());
+		model.addAttribute("dni", c.getDni());
+		model.addAttribute("direc", c.getDirec());
+		model.addAttribute("cel", c.getCel());
+		model.addAttribute("rucc", c.getRucc());
+		model.addAttribute("raz_soc", c.getRaz_soc());
+		
 		return ma;
 	}
 	@GetMapping("/del/{id}")

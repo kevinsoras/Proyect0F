@@ -130,31 +130,68 @@
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
+								<form:form method="POST" action="/upd" modelAttribute="cliente">
 								<div class="modal-body">
-								
-									<form:form method="POST" action="/upd" modelAttribute="cliente">
-										<form:form method="POST" action="upd"
-											modelAttribute="cliente">
-											<table>
-												<tr>
-													<td><form:label path="nom">Name</form:label></td>
-													<td><form:input path="nom" /></td>
-												</tr>
-												
-												<tr>
-													<td><input type="submit" value="Submit" /></td>
-												</tr>
-											</table>
-										</form:form>
-									</form:form>
+
 									
+										
+											<div class="form-group row">
+												<label  class="col-sm-2 col-form-label">Nombre:</label>
+												<div class="col-sm-10">
+													<form:input type="text" class="form-control"
+														path="nom"/>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label  class="col-sm-2 col-form-label">Apellidos:</label>
+												<div class="col-sm-10">
+													<form:input type="text" class="form-control"
+														path="apell"/>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label  class="col-sm-2 col-form-label">Dni:</label>
+												<div class="col-sm-10">
+													<form:input type="text" class="form-control"
+														path="dni"/>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label  class="col-sm-2 col-form-label">Direccion:</label>
+												<div class="col-sm-10">
+													<form:input type="text" class="form-control"
+														path="direc"/>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label  class="col-sm-2 col-form-label">Celular:</label>
+												<div class="col-sm-10">
+													<form:input type="text" class="form-control"
+														path="cel"/>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label  class="col-sm-2 col-form-label">Ruc:</label>
+												<div class="col-sm-10">
+													<form:input type="text" class="form-control"
+														path="rucc"/>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label  class="col-sm-2 col-form-label">Razón Social:</label>
+												<div class="col-sm-10">
+													<form:input type="text" class="form-control"
+														path="raz_soc"/>
+												</div>
+											</div>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">Close</button>
+									
+										<a href="ClienteLista" class="btn btn-success" >Close</a>
 									<button type="button" class="btn btn-primary">Save
 										changes</button>
 								</div>
+								</form:form>
 							</div>
 						</div>
 					</div>
@@ -197,7 +234,7 @@
 <script src="${urlrecursos}/datatables/jquery.dataTables.js"></script>
 <script src="${urlrecursos}/datatables/dataTables.bootstrap4.js"></script>
 <script>
-	var modal = ${modal};
+	var modal = ${modal}
 	
 	$(function() {
 
