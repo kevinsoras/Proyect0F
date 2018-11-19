@@ -17,19 +17,19 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		/*ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
         ClienteDao dao =(ClienteDao)context.getBean("clienteDaoImp");
         //System.out.println(dao.delete(2));
-        Cliente mapa = dao.read(3);
-        System.out.println(mapa.getApell());
+        //Cliente mapa = dao.read(3);
+        //System.out.println(mapa.getApell());
         
         List<Map<String,Object>> listacli = dao.readAll();
         
         System.out.println(listacli.size());
         for(Map<String,Object> map : listacli) {
         	System.out.println(map.get("nom"));
-        }*/
-        pruebarol();
+        }
+        //pruebarol();
 	}
 	public static void pruebarol() {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
