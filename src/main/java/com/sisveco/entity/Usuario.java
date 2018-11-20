@@ -25,6 +25,13 @@ public class Usuario {
 		this.apell = apell;
 		this.estado = estado;
 	}
+	
+	public Usuario(int idusu, String usu, String pasw) {
+		super();
+		this.idusu = idusu;
+		this.usu = usu;
+		this.pasw = pasw;
+	}
 	public int getIdusu() {
 		return idusu;
 	}
