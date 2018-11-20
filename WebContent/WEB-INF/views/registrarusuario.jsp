@@ -94,7 +94,7 @@
 							<c:forEach items="${lista}" var="usuario">
 								<tr>
 									<th scope="row">1</th>
-									<td>${usuario.nom}</td>
+									<td>${usuario.usu}</td>
 									<td>${usuario.apell}</td>
 									<td>${usuario.dni}</td>
 									<td>${usuario.direc}</td>
