@@ -23,6 +23,14 @@ public String main2() {
 public String pagocreditpagar() {
 	return "pagocreditpagar";
 }
+@GetMapping("/proveedores")
+public String proveedores() {
+	return "proveedores";
+}
+@GetMapping("/registrarguia")
+public String registrarguia() {
+	return "registrarguia";
+}
 @GetMapping("/pagocreditprin")
 public String pagocreditprin() {
 	return "pagocreditprin";

@@ -1,5 +1,6 @@
 package com.sisveco.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ import com.sisveco.serviceImp.ClienteServiceImp;
 public class ClienteController {
 	@Autowired
 	private ClienteServiceImp csi;
+	
+
 	@GetMapping("/Registrarcliente")
 	
 	public String Registrarcliente() {
@@ -32,6 +35,7 @@ public class ClienteController {
 		mo.addAttribute("modal",false);
 		ma.addObject("lista",csi.readAll());
 		ma.addObject("cliente",new Cliente());
+		ma.addObject("clienteCrear",new Cliente());
 		return ma;
 	}
 	@GetMapping("/ClienteListatrue")
@@ -39,11 +43,11 @@ public class ClienteController {
 		
 		ModelAndView ma = new ModelAndView();
 		Cliente c = csi.read(id);
-		System.out.println(c.getNom());
 		ma.setViewName("Registrarcliente");
 		ma.addObject("cliente",c);
 		ma.addObject("modal",true);
 		ma.addObject("lista",csi.readAll());
+		ma.addObject("clienteCrear",new Cliente());
 		model.addAttribute("nom", c.getNom());
 		model.addAttribute("apell", c.getApell());
 		model.addAttribute("dni", c.getDni());
@@ -51,6 +55,7 @@ public class ClienteController {
 		model.addAttribute("cel", c.getCel());
 		model.addAttribute("rucc", c.getRucc());
 		model.addAttribute("raz_soc", c.getRaz_soc());
+		model.addAttribute("idcli", c.getIdcli());
 		
 		return ma;
 	}
@@ -69,8 +74,15 @@ public class ClienteController {
 	}
 	@GetMapping("/upd")
 	public String ClienteUpdate(Model model, @ModelAttribute("cliente") Cliente cliente) {
-		csi.update(cliente);
-		return "redirect:/Cliente/ClienteLista";
 		
+		csi.update(cliente);
+		return "redirect:/cliente/ClienteLista";
+		
+	}
+	@GetMapping("/create")
+	public String ClienteCreate(@ModelAttribute ("clienteCrear") Cliente cliente) {
+		System.out.println("Nombre:" + cliente.getNom());
+		csi.create(cliente);
+		return "redirect:/cliente/ClienteLista";
 	}
 }

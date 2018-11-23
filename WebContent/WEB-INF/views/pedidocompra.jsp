@@ -38,12 +38,24 @@
 
             <div style="width: 62%;float: left;">
               <br>
-
-              Buscar Producto :
-              <br>
-              <input style="width: 220px;" type="number" class="form-control" placeholder="Codigo del producto" aria-label="Recipient's username" aria-describedby="basic-addon2">
-              <br>
-              <table class="table table-bordered">
+				<div >
+					 Buscar Producto :
+		              
+		              <input style="width: 500px;" id="producto" type="text" class="form-control" placeholder="Codigo del producto"
+		               >
+		               <ul class="list-group" id="ul" >
+		              
+		                <c:forEach items="${productos}" var="producto">
+		               <li class="list-group-item"  ><a href="ObtenerProducto/${producto.idproducto}" style="color: black;text-decoration: none;">${producto.nombre} </a></li>
+		               </c:forEach>
+		                
+		              	
+		               </ul>
+		              <br>
+		         
+				
+				</div>
+                  <table class="table table-bordered">
 
   <thead>
     <tr>
@@ -60,11 +72,11 @@
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>  <input style="width: 180px;" type="number" class="form-control" placeholder="Cantidad" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <td>  <input style="width: 180px;" type="number" class="form-control" placeholder="Cantidad" aria-label="Recipient's username" aria-describedby="basic-addon2" value="5">
 </td>
       <td>Freno de calidad</td>
       <td>12</td>
-      <td></td>
+      <td>60</td>
       <td>  
         <button type="button" class="btn btn-danger">Eliminar</button>
 </td>
@@ -73,6 +85,8 @@
     
   </tbody>
 </table>
+<label style="margin-left:900px;">cantidad: 60.00</label>
+<br>
 <button type="button" class="btn btn-success">Volcar todo</button>
 <button type="button" class="btn btn-danger">Confirmar</button>
             </div>
@@ -82,9 +96,9 @@
              <form>
     <div class="form-group">
     <label for="inputAddress">Cliente</label>
-
-
     <input type="number" class="form-control" id="inputAddress" placeholder="Buscar por dni">
+    <br>
+     <button type="button" class="btn btn-info">Buscar</button>
   </div>
   <div class="form-group">
     <label for="inputPassword4">Apellido</label>
@@ -109,6 +123,20 @@
 </div>
 
 <br><br>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked>
+  <label class="form-check-label" for="inlineRadio2">Proforma</label>
+</div>
+
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <label class="form-check-label" for="inlineRadio2">Boleta</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <label class="form-check-label" for="inlineRadio2">Factura</label>
+</div>
+<br>
 <button type="button" class="btn btn-info">Registrar</button>
    </form>
   </div>
@@ -149,6 +177,34 @@
     <script src="${urlrecursos}/chart.js/Chart.min.js"></script>
     <script src="${urlrecursos}/datatables/jquery.dataTables.js"></script>
     <script src="${urlrecursos}/datatables/dataTables.bootstrap4.js"></script>
+<script>
+//var prod = ${valor};
+//var arr = ${productos};
 
+$(function() {
+	$("#ul").hide();
+	$("#producto").keyup(function(){
+		var pala = $("#producto").val();
+		
+		if(pala===""){
+			$("#ul").hide();
+		}else{
+			$("#ul").show();
+			$("#ul li ").filter(function(){
+				$(this).toggle($(this).text().toLowerCase().indexOf(pala) > -1);
+			});
+		}
+	});
+	$("#ul li").click(function(){
+		var q=$(this).index();
+		var n = $("#ul").find("li").eq(q).html();
+		
+		
+		
+	});
+	
+
+});
+</script>
 </html>
 

@@ -45,4 +45,7 @@
 	<bean id="usuarioDaoImp" class="com.sisveco.daoimp.UsuarioDaoImp"> 
 		<property name="jdbcTemplate" ref="jdbcTemplate" /> 
 	</bean>
+	<bean id="productoDaoImp" class="com.sisveco.daoimp.ProductoDaoImp"> 
+		<property name="jdbcTemplate" ref="jdbcTemplate" /> 
+	</bean>
 </beans>

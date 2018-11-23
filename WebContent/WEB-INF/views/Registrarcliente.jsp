@@ -38,41 +38,55 @@
 
 			<!-- Espacio formulario registrar cliente-->
 			<div>
-				<form>
+				<form:form  method="GET" action="create" modelAttribute="clienteCrear" >
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputEmail4">Nombre</label> <input type="text"
-								class="form-control" id="inputEmail4"
-								placeholder="Coloque el nombre">
+							<label for="inputEmail4">Nombre</label> <form:input type="text"
+								class="form-control" path="nom"
+								placeholder="Coloque el nombre"/>
 						</div>
 
 					</div>
 					<div class="form-group">
-						<label for="inputPassword4">Apellido</label> <input type="text"
-							class="form-control" id="inputAddress"
-							placeholder="Coloque el apellido">
+						<label for="inputPassword4">Apellido</label> <form:input type="text"
+							class="form-control" path="apell"
+							placeholder="Coloque el apellido"/>
 					</div>
 					<div class="form-group">
-						<label for="inputAddress">Dni</label> <input type="number"
-							class="form-control" id="inputAddress" placeholder="Maximo 8 NÂ°">
+						<label for="inputAddress">Dni</label> <form:input type="text"
+							class="form-control" path="dni" placeholder="Maximo 8 NÂ°"/>
 					</div>
 					<div class="form-group">
-						<label for="inputAddress2">Direccion</label> <input type="text"
-							class="form-control" id="inputAddress2" placeholder="Direccion">
+						<label for="inputAddress2">Direccion</label> <form:input type="text"
+							class="form-control" path="direc" placeholder="Direccion"/>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputCity">Celular</label> <input type="number"
-								placeholder="Maximo 9 NÂ°" class="form-control" id="inputCity">
+							<label for="inputCity">Celular</label> <form:input type="text"
+								placeholder="Maximo 9 NÂ°" path="cel" class="form-control" />
+						</div>
+
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="inputCity">Ruc</label> <form:input type="text"
+								placeholder="Maximo 11" path="rucc" class="form-control" />
+						</div>
+
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="inputCity">Razón Social</label> <form:input type="text"
+								placeholder="Coloque razón Social" path="raz_soc" class="form-control" />
 						</div>
 
 					</div>
 					<br>
 					<button type="submit" class="btn btn-primary">Agregar</button>
 
-					<br> <br>
+					
 
-				</form>
+				</form:form>
 
 				<div>
 					<table class="table table-bordered">
@@ -86,7 +100,7 @@
 								<th scope="col">Celular</th>
 								<th scope="col">RUC</th>
 								<th scope="col">Razón social</th>
-								<th colspan="2">Acciones</th>
+								<th colspan="1">Acciones</th>
 
 
 							</tr>
@@ -105,8 +119,6 @@
 									<td><a id="modal" href="read/${cliente.idcli}"
 										style="color: blue;"><i class="fa fa-pencil-square-o"
 											aria-hidden="true"></i></a></td>
-									<td><a href="del/${cliente.idcli}" style="color: red;"><i
-											class="fa fa-trash" aria-hidden="true"></i></a></td>
 
 
 								</tr>
@@ -130,9 +142,9 @@
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
-								<form:form method="POST" action="/upd" modelAttribute="cliente">
+								<form:form method="GET" action="upd" modelAttribute="cliente">
 								<div class="modal-body">
-
+											
 									
 										
 											<div class="form-group row">
@@ -140,6 +152,8 @@
 												<div class="col-sm-10">
 													<form:input type="text" class="form-control"
 														path="nom"/>
+													<form:input type="hidden" class="form-control"
+														path="idcli"/>
 												</div>
 											</div>
 											<div class="form-group row">
@@ -188,8 +202,8 @@
 								<div class="modal-footer">
 									
 										<a href="ClienteLista" class="btn btn-success" >Close</a>
-									<button type="button" class="btn btn-primary">Save
-										changes</button>
+										<input type="submit" class="btn btn-primary" value="Guardar">
+										
 								</div>
 								</form:form>
 							</div>
