@@ -60,28 +60,40 @@
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputEmail4">Usuario</label> 
-							<input type="text"
+							<label for="inputCity">Ruc</label>
+							<form:input type="text" placeholder="Maximo 11" path="rucc"
+								class="form-control" />
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="inputCity">Razón Social</label>
+							<form:input type="text" placeholder="Coloque razón Social"
+								path="raz_soc" class="form-control" />
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="inputEmail4">Usuario</label> <input type="text"
 								class="form-control" id="inputEmail4"
 								placeholder="Coloque el usuario">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword4">Contraseña</label> 
-						<input
+						<label for="inputPassword4">Contraseña</label> <input
 							type="number" class="form-control" id="inputAddress"
 							placeholder="Coloque la contraseña">
 					</div>
 					<br>
 					<div class="form-check form-check-inline">
 						<button class="form-check-input" type="checkbox"
-							id="inlineCheckbox1" value="option1" checked=""> <label
-							class="form-check-label" for="inlineCheckbox1">Habilitado</label>
+							id="inlineCheckbox1" value="option1" checked="">
+							<label class="form-check-label" for="inlineCheckbox1">Habilitado</label>
 					</div>
 					<div class="form-check form-check-inline">
 						<button class="form-check-input" type="checkbox"
-							id="inlineCheckbox2" value="option2"> <label
-							class="form-check-label" for="inlineCheckbox2">Deshabilitado</label>
+							id="inlineCheckbox2" value="option2">
+							<label class="form-check-label" for="inlineCheckbox2">Deshabilitado</label>
 					</div>
 					<br> <br>
 					<button type="submit" class="btn btn-primary">Agregar</button>
@@ -124,7 +136,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
-			<!-- Modal -->
+					<!-- Modal -->
 					<div class="modal fade" id="exampleModal" tabindex="-1"
 						role="dialog" aria-labelledby="exampleModalLabel"
 						aria-hidden="true">
@@ -138,23 +150,21 @@
 									</button>
 								</div>
 								<div class="modal-body">
-								
+
 									<form:form method="POST" action="/upd" modelAttribute="cliente">
-										<form:form method="POST" action="upd"
-											modelAttribute="cliente">
+										<form:form method="POST" action="upd" modelAttribute="cliente">
 											<table>
 												<tr>
 													<td><form:label path="nom">Name</form:label></td>
 													<td><form:input path="nom" /></td>
 												</tr>
-												
 												<tr>
 													<td><input type="submit" value="Submit" /></td>
 												</tr>
 											</table>
 										</form:form>
 									</form:form>
-									
+
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary"
@@ -182,18 +192,21 @@
 <script src="${urlrecursos}/datatables/jquery.dataTables.js"></script>
 <script src="${urlrecursos}/datatables/dataTables.bootstrap4.js"></script>
 <script>
-	var modal = ${modal};
+	var modal = $
+	{
+		modal
+	};
 	$(function() {
 		if (modal === true) {
 			$("#exampleModal").modal("show");
 		}
-		 $("#inlineCheckbox1").click(function() {  
-		        if($("#inlineCheckbox1").is(':checked')) {  
-		            alert("Está activado");  
-		        } else {  
-		            alert("No está activado");  
-		        }  
-		    });  
+		$("#inlineCheckbox1").click(function() {
+			if ($("#inlineCheckbox1").is(':checked')) {
+				alert("Está activado");
+			} else {
+				alert("No está activado");
+			}
+		});
 	});
 	/*
 	 $(function(){
