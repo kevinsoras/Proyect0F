@@ -42,7 +42,7 @@ public class UsuarioDaoImp implements UsuarioDao {
 	@Override
 	public int update(Usuario u) {
 		// TODO Auto-generated method stub
-		return jdbcTemplate.update("call Usuario_sp_Modificar(?,?,?,?,?,?,?)", u.getIdusu(),u.getIdcli(),u.getIdroll(),u.getUsu(),u.getPasw(),u.getNombr(),u.getApell());
+		return jdbcTemplate.update("call Usuario_sp_Modificar(?,?,?,?,?)", u.getIdusu(),u.getIdcli(),u.getIdroll(),u.getUsu(),u.getPasw());
 	}
 
 	@Override
@@ -92,5 +92,7 @@ public class UsuarioDaoImp implements UsuarioDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }
