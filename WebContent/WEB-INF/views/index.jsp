@@ -21,6 +21,7 @@
 <link href="${urlrecursos}/css/sb-admin.css" rel="stylesheet">
 </head>
 <body>
+<<<<<<< HEAD
   <jsp:include page="template/top.jsp"></jsp:include>  
   <jsp:include page="template/left.jsp"></jsp:include>  
 
@@ -199,7 +200,11 @@
 
     </div>
 
-
+<c:forEach items="${lista}" var="user">
+				<li><a class="app-menu__item" href="${user.ACS_URL}"><i
+						class="app-menu__icon ${user.ACS_ICONO}"></i><span
+						class="app-menu__label"> ${user.ACS_NOMBRE} </span></a> <!-- id="${user.ACS_ID}"  <a  href="upd/${user.ACS_ID}"> Hola </a>--></li>
+			</c:forEach>
 </body>
 <script src="${urlrecursos}/jquery/jquery.min.js"></script>
 <script src="${urlrecursos}/bootstrap/js/bootstrap.bundle.min.js"></script>
