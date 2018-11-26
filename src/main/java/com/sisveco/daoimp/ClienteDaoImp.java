@@ -65,6 +65,7 @@ public class ClienteDaoImp implements ClienteDao{
 	@Override
 	public List<Map<String, Object>> readAll() {
 		// TODO Auto-generated method stub
+		/*
 		SimpleJdbcCall sjc = new SimpleJdbcCall(jdbcTemplate).withProcedureName("Cliente_sp_Mostrar")
 				.returningResultSet("clientes",new ClienteRowMapper());
 		Map<String,Object> out =  sjc.execute();
@@ -76,7 +77,7 @@ public class ClienteDaoImp implements ClienteDao{
 			ObjectMapper om = new ObjectMapper();
 			Map<String, Object> maper= om.convertValue(cli,Map.class) ;
 			list.add(maper);
-		}
-		return   list;
+		}*/
+		return   jdbcTemplate.queryForList("{call Cliente_sp_Mostrar()}");
 	}
 }

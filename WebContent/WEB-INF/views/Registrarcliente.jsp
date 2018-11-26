@@ -109,14 +109,14 @@
 							<c:forEach items="${lista}" var="cliente">
 								<tr>
 									<th scope="row">1</th>
-									<td>${cliente.nom}</td>
-									<td>${cliente.apell}</td>
+									<td>${cliente.nombre}</td>
+									<td>${cliente.apellido}</td>
 									<td>${cliente.dni}</td>
-									<td>${cliente.direc}</td>
-									<td>${cliente.cel}</td>
-									<td>${cliente.rucc}</td>
-									<td>${cliente.raz_soc}</td>
-									<td><a id="modal" href="read/${cliente.idcli}"
+									<td>${cliente.direccion}</td>
+									<td>${cliente.celular}</td>
+									<td>${cliente.ruc}</td>
+									<td>${cliente.razon_social}</td>
+									<td><a id="modal" href="read/${cliente.idcliente}"
 										style="color: blue;"><i class="fa fa-pencil-square-o"
 											aria-hidden="true"></i></a></td>
 
