@@ -21,7 +21,6 @@
 <link href="${urlrecursos}/css/sb-admin.css" rel="stylesheet">
 </head>
 <body>
-<<<<<<< HEAD
   <jsp:include page="template/top.jsp"></jsp:include>  
   <jsp:include page="template/left.jsp"></jsp:include>  
 
