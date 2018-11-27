@@ -114,40 +114,43 @@
 						</tbody>
 					</table>
 					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1"
+					<div class="modal fade" id="exampleModale" tabindex="-1"
 						role="dialog" aria-labelledby="exampleModalLabel"
 						aria-hidden="true">
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+									<h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
 									<button type="button" class="close" data-dismiss="modal"
 										aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
 								<form:form method="GET" action="upd" modelAttribute="usuario">
-									<div class="modal-body">
-										<div class="form-group row">
-											<label class="col-sm-2 col-form-label">Usuario:</label>
-											<div class="col-sm-10">
-												<form:input type="text" class="form-control" 
-												path="usu" />
-												<form:input type="hidden" class="form-control" 
-												path="idusu" />
+								<div class="modal-body">
+											<div class="form-group row">
+												<label  class="col-sm-2 col-form-label">Usuario:</label>
+												<div class="col-sm-10">
+													<form:input type="text" class="form-control"
+														path="usu	"/>
+													<form:input type="hidden" class="form-control"
+														path="idusu"/>
+												</div>
 											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-sm-2 col-form-label">Password:</label>
-											<div class="col-sm-10">
-												<form:input type="text" class="form-control" path="pasw" />
+											<div class="form-group row">
+												<label  class="col-sm-2 col-form-label">Password:</label>
+												<div class="col-sm-10">
+													<form:input type="text" class="form-control"
+														path="pasw"/>
+												</div>
 											</div>
-										</div>
-									</div>
-									<div class="modal-footer">
-										<a href="UsuarioLista" class="btn btn-success">Close</a> <input
-											type="submit" class="btn btn-primary" value="Guardar">
-									</div>
+								</div>
+								<div class="modal-footer">
+									
+										<a href="UsuarioLista" class="btn btn-success" >Close</a>
+										<input type="submit" class="btn btn-primary" value="Guardar">
+										
+								</div>
 								</form:form>
 							</div>
 						</div>
@@ -184,7 +187,7 @@
 
 		if (modal === true) {
 
-			$("#exampleModal").modal("show");
+			$("#exampleModale").modal("show");
 
 		}
 

@@ -26,41 +26,12 @@ import com.sisveco.serviceImp.UsuarioServiceImp;
 public class UsuarioController {
 	@Autowired
 	private UsuarioServiceImp usi;
-	@GetMapping("/Validarusuario")
+	@GetMapping("/Registrarusuario")
 	
-	public String Validarusuario() {
-		return "Validarusuario";
+	public String Registrarusuario() {
+		return "Registrarusuario";
 	}
 	
-	public ModelAndView main1(Model model, HttpServletRequest request) {
-		System.out.println(request.getParameter("user") + " / " + request.getParameter("password"));
-		HttpSession httpSession = request.getSession();
-		String user = request.getParameter("user");
-		String password = request.getParameter("password");
-		Usuario em = new Usuario(1, user, password);
-		UsuarioDao usu = new UsuarioDaoImp();
-		ModelAndView ma = new ModelAndView();
-		try {
-			List<Map<String, Object>> lista = usu.validarUsuario(em);
-			if (!lista.isEmpty()) {
-				ma.setViewName("principal");
-				for (Map<String, Object> map : lista) {
-					System.out.println(map.get("ACS_ID") + "/" + map.get("EMPL_APELLIDO") +"// "+map.get("ACS_NOMBRE"));
-				}
-				httpSession.setAttribute("user", em.getUsu());
-				ma.addObject("user", (String) httpSession.getAttribute("user"));
-				httpSession.setAttribute("lista", lista);
-				ma.addObject("lista", (List<Map<String, Object>>) httpSession.getAttribute("lista"));
-			} else {
-					httpSession.invalidate();
-					ma.setViewName("redirect:/");
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			ma.setViewName("redirect:/");
-		}
-		return ma;
-	}
 	@GetMapping("/UsuarioLista")
 	public ModelAndView ListarUsuario(Model mo) {
 		ModelAndView ma = new ModelAndView();
@@ -68,7 +39,7 @@ public class UsuarioController {
 		mo.addAttribute("modal",false);
 		ma.addObject("lista",usi.readAll());
 		ma.addObject("usuario",new Usuario());
-		ma.addObject("usuarioCrear",new Usuario());
+		ma.addObject("usuarioCrear", new Usuario());
 		return ma;
 	}
 	@GetMapping("/UsuarioListatrue")
@@ -114,4 +85,35 @@ public class UsuarioController {
 		usi.create(usuario);
 		return "redirect:/usuario/UsuarioLista";
 	}
+	
+	/*public ModelAndView main1(Model model, HttpServletRequest request) {
+	System.out.println(request.getParameter("user") + " / " + request.getParameter("password"));
+	HttpSession httpSession = request.getSession();
+	String user = request.getParameter("user");
+	String password = request.getParameter("password");
+	Usuario em = new Usuario(1, user, password);
+	UsuarioDao usu = new UsuarioDaoImp();
+	ModelAndView ma = new ModelAndView();
+	try {
+		List<Map<String, Object>> lista = usu.validarUsuario(em);
+		if (!lista.isEmpty()) {
+			ma.setViewName("principal");
+			for (Map<String, Object> map : lista) {
+				System.out.println(map.get("ACS_ID") + "/" + map.get("EMPL_APELLIDO") +"// "+map.get("ACS_NOMBRE"));
+			}
+			httpSession.setAttribute("user", em.getUsu());
+			ma.addObject("user", (String) httpSession.getAttribute("user"));
+			httpSession.setAttribute("lista", lista);
+			ma.addObject("lista", (List<Map<String, Object>>) httpSession.getAttribute("lista"));
+		} else {
+				httpSession.invalidate();
+				ma.setViewName("redirect:/");
+		}
+	} catch (Exception e) {
+		// TODO: handle exception
+		ma.setViewName("redirect:/");
+	}
+	return ma;
+*/
+}
 }
