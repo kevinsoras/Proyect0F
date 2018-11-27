@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sisveco.dao.UsuarioDao;
 import com.sisveco.daoimp.UsuarioDaoImp;
-import com.sisveco.entity.Cliente;
 import com.sisveco.entity.Usuario;
 import com.sisveco.serviceImp.UsuarioServiceImp;
 
@@ -81,12 +80,14 @@ public class UsuarioController {
 		ma.addObject("modal",true);
 		ma.addObject("lista",usi.readAll());
 		ma.addObject("usuarioCrear",new Usuario());
-		model.addAttribute("nom", u.getNombr());
+		model.addAttribute("nombr", u.getNombr());
 		model.addAttribute("apell", u.getApell());
-		model.addAttribute("dni", u.getDirec());
-		model.addAttribute("direc", u.getCel());
-		model.addAttribute("cel", u.getIdusu());
-		model.addAttribute("rucc", u.getPasw());
+		model.addAttribute("direc", u.getDirec());
+		model.addAttribute("cel", u.getCel());
+		model.addAttribute("idroll", u.getIdroll());
+		model.addAttribute("usu", u.getUsu());
+		model.addAttribute("pasw", u.getPasw());
+		model.addAttribute("idusu", u.getIdusu());
 		return ma;
 	}
 	@GetMapping("/del/{id}")
@@ -105,6 +106,12 @@ public class UsuarioController {
 	@GetMapping("/upd")
 	public String UsuarioUpdate(Model model, @ModelAttribute("usuario") Usuario usuario) {
 		usi.update(usuario);
-		return "redirect:/Usuario/UsuarioLista";
+		return "redirect:/usuario/UsuarioLista";
+	}
+	@GetMapping("/create")
+	public String UsuarioCreate(@ModelAttribute ("usuarioCrear") Usuario usuario) {
+		System.out.println("Nombre:" + usuario.getNombr());
+		usi.create(usuario);
+		return "redirect:/usuario/UsuarioLista";
 	}
 }

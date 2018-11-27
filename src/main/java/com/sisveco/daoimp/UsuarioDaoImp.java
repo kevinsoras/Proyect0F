@@ -86,7 +86,7 @@ public class UsuarioDaoImp implements UsuarioDao {
 			Map<String, Object> maper= om.convertValue(us,Map.class) ;
 			list.add(maper);
 		}*/
-		return   jdbcTemplate.queryForList("call Usuario_sp_Mostrar()");
+		return   jdbcTemplate.queryForList("{call Usuario_sp_Mostrar()}");
 	}
 
 	@Override

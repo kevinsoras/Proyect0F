@@ -1,5 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <spring:url value="/" var="urlRoot" />
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -29,58 +30,57 @@
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">Menu</a></li>
 			</ol>
-			<!-- Espacio formulario registrar cliente-->
+			<!-- Formulario registrar usuario-->
 			<div>
-				<form>
+				<form:form method="GET" action="create"
+					modelAttribute="usuarioCrear">
 					<div class="form-row">
-
 						<div class="form-group col-md-6">
 							<label for="inputEmail4">Nombre</label> <input type="text"
-								class="form-control" id="inputEmail4"
+								class="form-control" path="nombr"
 								placeholder="Coloque el nombre">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword4">Apellido</label> <input type="text"
-							class="form-control" id="inputAddress"
+							class="form-control" path="apell"
 							placeholder="Coloque el apellido">
 					</div>
 					<div class="form-group">
 						<label for="inputAddress">Direccion</label> <input type="text"
-							class="form-control" id="inputAddress2" placeholder="Direccion">
-						
+							class="form-control" path="direc" placeholder="Direccion">
+
 						<!-- <input type="number"
 							class="form-control" id="inputAddress" placeholder="Maximo 8 N°"> -->
 					</div>
 					<div class="form-group">
 						<label for="inputAddress2">Celular</label> <input type="text"
-							class="form-control" id="inputAddress2" placeholder="Celular">
+							class="form-control" path="cel" placeholder="Celular">
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="inputCity">Rol</label><input type="text"
-							class="form-control" id="inputAddress2" placeholder="Rol">
-							 <!-- <input type="number"
+								class="form-control" path="idroll" placeholder="Rol">
+							<!-- <input type="number"
 								placeholder="Maximo 9 NÂ°" class="form-control" id="inputCity"> -->
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputCity">Usuario</label>
-							<input type="text" placeholder="Usuario" path="usua"
-								class="form-control" />
+							<label for="inputCity">Usuario</label> <input type="text"
+								placeholder="Usuario" path="usu" class="form-control" />
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputCity">Password</label>
-							<input type="text" placeholder="Password"
-								path="pass" class="form-control" />
+							<label for="inputCity">Password</label> <input type="text"
+								placeholder="Password" path="pasw" class="form-control" />
 						</div>
 					</div>
 					<button type="submit" class="btn btn-primary">Agregar</button>
-					<br> <br>
-				</form>
+					<br>
+					<br>
+				</form:form>
 				<div>
 					<table class="table table-bordered">
 						<thead>
@@ -126,29 +126,29 @@
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
-								<div class="modal-body">
-
-									<form:form method="POST" action="/upd" modelAttribute="cliente">
-										<form:form method="POST" action="upd" modelAttribute="cliente">
-											<table>
-												<tr>
-													<td><form:label path="nom">Name</form:label></td>
-													<td><form:input path="nom" /></td>
-												</tr>
-												<tr>
-													<td><input type="submit" value="Submit" /></td>
-												</tr>
-											</table>
-										</form:form>
-									</form:form>
-
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-primary">Save
-										changes</button>
-								</div>
+								<form:form method="GET" action="upd" modelAttribute="usuario">
+									<div class="modal-body">
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Usuario:</label>
+											<div class="col-sm-10">
+												<form:input type="text" class="form-control" 
+												path="usu" />
+												<form:input type="hidden" class="form-control" 
+												path="idusu" />
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Password:</label>
+											<div class="col-sm-10">
+												<form:input type="text" class="form-control" path="pasw" />
+											</div>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<a href="UsuarioLista" class="btn btn-success">Close</a> <input
+											type="submit" class="btn btn-primary" value="Guardar">
+									</div>
+								</form:form>
 							</div>
 						</div>
 					</div>
@@ -156,8 +156,14 @@
 			</div>
 			<!-- /.container-fluid -->
 			<!-- Sticky Footer -->
+			<footer class="sticky-footer">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright Â© Sisveco 2018</span>
+					</div>
+				</div>
+			</footer>
 		</div>
-		<!-- /.content-wrapper -->
 	</div>
 </body>
 <script src="${urlrecursos}/jquery/jquery.min.js"></script>
@@ -172,18 +178,16 @@
 	var modal = $
 	{
 		modal
-	};
+	}
+
 	$(function() {
+
 		if (modal === true) {
+
 			$("#exampleModal").modal("show");
+
 		}
-		$("#inlineCheckbox1").click(function() {
-			if ($("#inlineCheckbox1").is(':checked')) {
-				alert("Está activado");
-			} else {
-				alert("No está activado");
-			}
-		});
+
 	});
 	/*
 	 $(function(){

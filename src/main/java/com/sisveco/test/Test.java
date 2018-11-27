@@ -30,7 +30,7 @@ public class Test {
       for(Map<String,Object> map : listacli) {
         	System.out.println(map.get("nom"));
 		}
-		//pruebausuario();
+		pruebausuario();
 	}
 	public static void pruebarol() {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
@@ -50,11 +50,10 @@ public class Test {
 		//Usuario mape = uao.read(10);
 		//System.out.println(mape.getUsu());
 		List<Map<String,Object>> listau = uao.readAll();
+
 		System.out.println(listau.size());
 		for(Map<String,Object> mape : listau) {
-			System.out.println(mape.get("usu"));
-			System.out.println(mape.get("pasw"));
-			System.out.println(mape.get("idusu"));
+			System.out.println(mape.get("nom"));
 		}
 	}
 }
