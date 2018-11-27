@@ -1,4 +1,4 @@
-package com.sisveco.test;
+	package com.sisveco.test;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +11,7 @@ import com.sisveco.dao.RolDao;
 import com.sisveco.dao.UsuarioDao;
 import com.sisveco.daoimp.UsuarioDaoImp;
 import com.sisveco.entity.Cliente;
+import com.sisveco.entity.Usuario;
 
 public class Test {
 
@@ -23,6 +24,7 @@ public class Test {
         //Cliente mapa = dao.read(3);
         //System.out.println(mapa.getApell());
         
+<<<<<<< HEAD
         List<Map<String,Object>> listacli = dao.Search("10");
         
         System.out.println(listacli.size());
@@ -30,6 +32,15 @@ public class Test {
         	System.out.println(map.get("nombre"));
 		}
 	
+=======
+        List<Map<String,Object>> listacli = dao.readAll();
+        
+        System.out.println(listacli.size());
+      for(Map<String,Object> map : listacli) {
+        	System.out.println(map.get("nom"));
+		}
+		pruebausuario();
+>>>>>>> 54a4b64d31f815540834689e3ce503d7116a0545
 	}
 	public static void pruebarol() {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
@@ -42,5 +53,17 @@ public class Test {
         for(Map<String,Object> map:listarol) {
         	System.out.println(map.get("nombre"));
         }
+	}
+	public static void pruebausuario() {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+		UsuarioDao uao = (UsuarioDao)context.getBean("usuarioDaoImp");
+		//Usuario mape = uao.read(10);
+		//System.out.println(mape.getUsu());
+		List<Map<String,Object>> listau = uao.readAll();
+
+		System.out.println(listau.size());
+		for(Map<String,Object> mape : listau) {
+			System.out.println(mape.get("nom"));
+		}
 	}
 }

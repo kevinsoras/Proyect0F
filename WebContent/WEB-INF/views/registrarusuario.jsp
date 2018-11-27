@@ -1,5 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <spring:url value="/" var="urlRoot" />
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -29,88 +30,66 @@
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">Menu</a></li>
 			</ol>
-			<!-- Espacio formulario registrar cliente-->
+			<!-- Formulario registrar usuario-->
 			<div>
-				<form>
+				<form:form method="GET" action="create"
+					modelAttribute="usuarioCrear">
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="inputEmail4">Nombre</label> <input type="text"
-								class="form-control" id="inputEmail4"
+								class="form-control" path="nombr"
 								placeholder="Coloque el nombre">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword4">Apellido</label> <input type="text"
-							class="form-control" id="inputAddress"
+							class="form-control" path="apell"
 							placeholder="Coloque el apellido">
 					</div>
 					<div class="form-group">
-						<label for="inputAddress">Dni</label> <input type="number"
-							class="form-control" id="inputAddress" placeholder="Maximo 8 NÂ°">
+						<label for="inputAddress">Direccion</label> <input type="text"
+							class="form-control" path="direc" placeholder="Direccion">
+
+						<!-- <input type="number"
+							class="form-control" id="inputAddress" placeholder="Maximo 8 N°"> -->
 					</div>
 					<div class="form-group">
-						<label for="inputAddress2">Direccion</label> <input type="text"
-							class="form-control" id="inputAddress2" placeholder="Direccion">
+						<label for="inputAddress2">Celular</label> <input type="text"
+							class="form-control" path="cel" placeholder="Celular">
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputCity">Celular</label> <input type="number"
-								placeholder="Maximo 9 NÂ°" class="form-control" id="inputCity">
+							<label for="inputCity">Rol</label><input type="text"
+								class="form-control" path="idroll" placeholder="Rol">
+							<!-- <input type="number"
+								placeholder="Maximo 9 NÂ°" class="form-control" id="inputCity"> -->
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputCity">Ruc</label>
-							<form:input type="text" placeholder="Maximo 11" path="rucc"
-								class="form-control" />
+							<label for="inputCity">Usuario</label> <input type="text"
+								placeholder="Usuario" path="usu" class="form-control" />
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputCity">Razón Social</label>
-							<form:input type="text" placeholder="Coloque razón Social"
-								path="raz_soc" class="form-control" />
+							<label for="inputCity">Password</label> <input type="text"
+								placeholder="Password" path="pasw" class="form-control" />
 						</div>
 					</div>
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label for="inputEmail4">Usuario</label> <input type="text"
-								class="form-control" id="inputEmail4"
-								placeholder="Coloque el usuario">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="inputPassword4">Contraseña</label> <input
-							type="number" class="form-control" id="inputAddress"
-							placeholder="Coloque la contraseña">
-					</div>
-					<br>
-					<div class="form-check form-check-inline">
-						<button class="form-check-input" type="checkbox"
-							id="inlineCheckbox1" value="option1" checked="">
-							<label class="form-check-label" for="inlineCheckbox1">Habilitado</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<button class="form-check-input" type="checkbox"
-							id="inlineCheckbox2" value="option2">
-							<label class="form-check-label" for="inlineCheckbox2">Deshabilitado</label>
-					</div>
-					<br> <br>
 					<button type="submit" class="btn btn-primary">Agregar</button>
-					<br> <br>
-				</form>
+					<br>
+					<br>
+				</form:form>
 				<div>
 					<table class="table table-bordered">
 						<thead>
 							<tr>
 								<th scope="col">#</th>
 								<th scope="col">Nombre</th>
-								<th scope="col">Apellidos</th>
-								<th scope="col">DNI</th>
+								<th scope="col">Apellido</th>
 								<th scope="col">Direccion</th>
 								<th scope="col">Celular</th>
-								<th scope="col">RUC</th>
-								<th scope="col">Razón social</th>
 								<th scope="col">Usuario</th>
 								<th colspan="2">Acciones</th>
 							</tr>
@@ -119,59 +98,60 @@
 							<c:forEach items="${lista}" var="usuario">
 								<tr>
 									<th scope="row">1</th>
-									<td>${cliente.nom}</td>
-									<td>${cliente.apell}</td>
-									<td>${cliente.dni}</td>
-									<td>${cliente.direc}</td>
-									<td>${cliente.cel}</td>
-									<td>${cliente.rucc}</td>
-									<td>${cliente.raz_soc}</td>
+									<td>${usuario.nombr}</td>
+									<td>${usuario.apell}</td>
+									<td>${usuario.direc}</td>
+									<td>${usuario.cel}</td>
 									<td>${usuario.usu}</td>
-									<td><a id="modal" href="read/${cliente.idcli}"
+									<td>${usuario.estado}</td>
+									<td><a id="modal" href="read/${usuario.idusu}"
 										style="color: blue;"><i class="fa fa-pencil-square-o"
 											aria-hidden="true"></i></a></td>
-									<td><a href="del/${cliente.idcli}" style="color: red;"><i
+									<td><a href="del/${usuario.idusu}" style="color: red;"><i
 											class="fa fa-trash" aria-hidden="true"></i></a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
 					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1"
+					<div class="modal fade" id="exampleModale" tabindex="-1"
 						role="dialog" aria-labelledby="exampleModalLabel"
 						aria-hidden="true">
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+									<h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
 									<button type="button" class="close" data-dismiss="modal"
 										aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
+								<form:form method="GET" action="upd" modelAttribute="usuario">
 								<div class="modal-body">
-
-									<form:form method="POST" action="/upd" modelAttribute="cliente">
-										<form:form method="POST" action="upd" modelAttribute="cliente">
-											<table>
-												<tr>
-													<td><form:label path="nom">Name</form:label></td>
-													<td><form:input path="nom" /></td>
-												</tr>
-												<tr>
-													<td><input type="submit" value="Submit" /></td>
-												</tr>
-											</table>
-										</form:form>
-									</form:form>
-
+											<div class="form-group row">
+												<label  class="col-sm-2 col-form-label">Usuario:</label>
+												<div class="col-sm-10">
+													<form:input type="text" class="form-control"
+														path="usu	"/>
+													<form:input type="hidden" class="form-control"
+														path="idusu"/>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label  class="col-sm-2 col-form-label">Password:</label>
+												<div class="col-sm-10">
+													<form:input type="text" class="form-control"
+														path="pasw"/>
+												</div>
+											</div>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">Close</button>
-									<button type="button" class="btn btn-primary">Save
-										changes</button>
+									
+										<a href="UsuarioLista" class="btn btn-success" >Close</a>
+										<input type="submit" class="btn btn-primary" value="Guardar">
+										
 								</div>
+								</form:form>
 							</div>
 						</div>
 					</div>
@@ -179,8 +159,14 @@
 			</div>
 			<!-- /.container-fluid -->
 			<!-- Sticky Footer -->
+			<footer class="sticky-footer">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright Â© Sisveco 2018</span>
+					</div>
+				</div>
+			</footer>
 		</div>
-		<!-- /.content-wrapper -->
 	</div>
 </body>
 <script src="${urlrecursos}/jquery/jquery.min.js"></script>
@@ -195,18 +181,16 @@
 	var modal = $
 	{
 		modal
-	};
+	}
+
 	$(function() {
+
 		if (modal === true) {
-			$("#exampleModal").modal("show");
+
+			$("#exampleModale").modal("show");
+
 		}
-		$("#inlineCheckbox1").click(function() {
-			if ($("#inlineCheckbox1").is(':checked')) {
-				alert("Está activado");
-			} else {
-				alert("No está activado");
-			}
-		});
+
 	});
 	/*
 	 $(function(){
