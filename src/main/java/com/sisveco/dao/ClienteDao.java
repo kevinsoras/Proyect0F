@@ -11,4 +11,6 @@ public interface ClienteDao {
     int delete(int key);
     Cliente read(int key);
     List<Map<String, Object>> readAll();
+    List<Map<String,Object>> Search(String Key);
+    
 }

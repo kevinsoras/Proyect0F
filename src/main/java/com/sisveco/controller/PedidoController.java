@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sisveco.entity.Cliente;
 import com.sisveco.entity.Producto;
+import com.sisveco.serviceImp.ClienteServiceImp;
 import com.sisveco.serviceImp.ProductoServiceImp;
 
 @Controller
@@ -22,21 +24,44 @@ import com.sisveco.serviceImp.ProductoServiceImp;
 public class PedidoController {
 @Autowired 
 private ProductoServiceImp psi;
+@Autowired
+private ClienteServiceImp csi;
 
-private List<Map<String,Object>> object = new ArrayList<>();
+
 
 @GetMapping("/RegistrarPedidoventa")
 public ModelAndView ListarProducto() {
 	ModelAndView ma = new ModelAndView();
 	ma.setViewName("pedidocompra");
 	ma.addObject("productos",psi.readAll());
-	for(Map<String,Object> ne :object) {
-		object.remove(ne);
-	}
+	
+	
 	//mo.addAttribute("modal",false);
 	
 	return ma;
 }
+
+@GetMapping("/Listapedidoproductos/{id}")
+@ResponseBody
+public Producto ListadoProductos(@PathVariable(value="id") int id){
+	System.out.println("productossslear");
+	return  psi.read(id);
+}
+@GetMapping("/BuscarCliente/{ingreso}")
+@ResponseBody
+public List<Map<String,Object>> BuscarClientes(@PathVariable(value="ingreso") String key) {
+	System.out.println("key"+key);
+	String llave =(String)key;
+	List<Map<String,Object>> mas = csi.Search(llave);
+	System.out.println(mas.size());
+	for(Map<String,Object> ma : mas ) {
+		System.out.println(ma.get("dni"));
+	}
+	
+	
+	return csi.Search(llave);
+}
+
 @GetMapping("/IngresarProducto")
 public ModelAndView IngresarProducto( @RequestParam("idpro") int idpro, Model model) {
 	ModelAndView ma = new ModelAndView();

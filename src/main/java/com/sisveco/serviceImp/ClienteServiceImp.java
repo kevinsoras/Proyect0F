@@ -43,4 +43,10 @@ public class ClienteServiceImp implements ClienteService{
 		return clientedao.readAll();
 	}
 
+	@Override
+	public List<Map<String,Object>> Search(String Key) {
+		// TODO Auto-generated method stub
+		return clientedao.Search(Key);
+	}
+
 }

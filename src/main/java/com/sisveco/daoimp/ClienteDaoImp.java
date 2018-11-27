@@ -80,4 +80,11 @@ public class ClienteDaoImp implements ClienteDao{
 		}*/
 		return   jdbcTemplate.queryForList("{call Cliente_sp_Mostrar()}");
 	}
+
+	@Override
+	public List<Map<String,Object>> Search(String Key) {
+		List<Map<String,Object>> nel =jdbcTemplate.queryForList("call Cliente_sp_Buscar(?)",Key);
+		System.out.println(nel.size());
+		return jdbcTemplate.queryForList("call Cliente_sp_Buscar(?)",Key);
+	}
 }

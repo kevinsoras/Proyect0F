@@ -24,7 +24,7 @@
 <body>
   <jsp:include page="template/top.jsp"></jsp:include>  
   <jsp:include page="template/left.jsp"></jsp:include>  
-<div id="content-wrapper">
+<div id="content-wrapper" style="float:left;">
 
         <div class="container-fluid">
 
@@ -46,49 +46,45 @@
 		               <ul class="list-group" id="ul" >
 		              
 		                <c:forEach items="${productos}" var="producto">
-		               <li class="list-group-item"  ><a href="ObtenerProducto/${producto.idproducto}" style="color: black;text-decoration: none;">${producto.nombre} </a></li>
+		               <li class="list-group-item"  >
+		               <a  id="${producto.idproducto}" style="color: black;text-decoration: none;">${producto.nombre} </a> 
+		               						</li>
 		               </c:forEach>
 		                
 		              	
 		               </ul>
 		              <br>
-		         
+		         	
 				
 				</div>
-                  <table class="table table-bordered">
+				<div class="container" id="stocker">
+ <label>
+ No se encuentra en Stock..!
+ </label>
+</div>
+                  <table class="table table-bordered" id="table">
 
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Cantidad</th>
       <th scope="col">Descripcion</th>
+      <th scope="col">Stock</th>
       <th scope="col">Costo</th>
-            <th scope="col">Costo total</th>
-            <th colspan="2">Acciones</th>
+      <th scope="col">Costo total</th>
+      <th colspan="2">Acciones</th>
 
 
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>  <input style="width: 180px;" type="number" class="form-control" placeholder="Cantidad" aria-label="Recipient's username" aria-describedby="basic-addon2" value="5">
-</td>
-      <td>Freno de calidad</td>
-      <td>12</td>
-      <td>60</td>
-      <td>  
-        <button type="button" class="btn btn-danger">Eliminar</button>
-</td>
-     
-    </tr>
-    
+   
   </tbody>
 </table>
 <label style="margin-left:900px;">cantidad: 60.00</label>
 <br>
-<button type="button" class="btn btn-success">Volcar todo</button>
-<button type="button" class="btn btn-danger">Confirmar</button>
+<button type="button" class="btn btn-success" id="volcartodo">Volcar todo</button>
+<button type="button" class="btn btn-danger" id="confirmar">Confirmar</button>
             </div>
 
 
@@ -96,21 +92,32 @@
              <form>
     <div class="form-group">
     <label for="inputAddress">Cliente</label>
-    <input type="number" class="form-control" id="inputAddress" placeholder="Buscar por dni">
+    <input type="text" class="form-control"  id="clienteSearch" placeholder="Buscar Cliente">
     <br>
-     <button type="button" class="btn btn-info">Buscar</button>
+     <button type="button" class="btn btn-info" id="buscar">Buscar</button>
   </div>
+  <div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <label for="inputPassword4">Apellido</label>
+    </div>
+    <div class="col-sm">
+      <input type="text" class="form-control" id="apellidoSeach" placeholder="Coloque el apellido">
+    </div>
+   
+  </div>
+</div>
   <div class="form-group">
     <label for="inputPassword4">Apellido</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="Coloque el apellido">
+    <input type="text" class="form-control" id="apellidoSeach" placeholder="Coloque el apellido">
   </div>
   <div class="form-group">
     <label for="inputAddress">Celular</label>
-    <input type="number" class="form-control" id="inputAddress" placeholder="Maximo 9 N°">
+    <input type="number" class="form-control" id="celularSearh" placeholder="Maximo 9 N°">
   </div>
   <div class="form-group">
     <label for="inputAddress">Dni</label>
-    <input type="number" class="form-control" id="inputAddress" placeholder="Maximo 8 N°">
+    <input type="number" class="form-control" id="Dnisearch" placeholder="Maximo 8 N°">
   </div>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked>
@@ -180,9 +187,10 @@
 <script>
 //var prod = ${valor};
 //var arr = ${productos};
-
+var carro = new Array() ;
 $(function() {
 	$("#ul").hide();
+	$("#stocker").hide();
 	$("#producto").keyup(function(){
 		var pala = $("#producto").val();
 		
@@ -197,14 +205,109 @@ $(function() {
 	});
 	$("#ul li").click(function(){
 		var q=$(this).index();
-		var n = $("#ul").find("li").eq(q).html();
+		var n = $("#ul").find("a").eq(q).attr("id");
+		var prod = $("#ul").find("a").eq(q).html();
+		console.log(n);
 		
-		
+		var mel = 'Listapedidoproductos/'+ n;
+		var valor=true;
+		$.ajax({type:'GET',
+				url:mel ,
+				success:function(result){
+					for (var i = 0; i <carro.length; i++) {
+				        if(result.nom===carro[i].nom){
+				            valor=false;
+				        }
+				    }
+				    if(valor===true){
+				    	
+				    	var o = new Object();
+				    	o.cant=0;
+				    	o.nom=result.nom;
+				    	o.codig=result.codig;
+				    	o.preci=result.preci;
+				    	o.stock=result.cant;
+				    	o.idprod=result.idprod;
+				    	o.costo=0;
+				    	if(o.stock===0){
+				    		 setTimeout(function() {
+				    		        $("#stocker").fadeOut(0);
+				    		    },0);
+				    		 
+				    		    setTimeout(function() {
+				    		        $("#stocker").fadeIn(1500);
+				    		    },6000);
+				    	}else{
+				       carro.push(o);
+				       ListarProductos();
+				    	}
+				    }
+				},
+				error:function(){
+					console.log("nosale");
+				}
+				});
+	});
+});
+function ListarProductos(){
+	$("#table tbody tr").remove(); 
+    for(var i = 0;i<carro.length;i++){
+       		
+            $("#table").append("<tr><td>"+(i+1)+"</td >"+
+                                       "<td><input id='"+i+"' value='"+carro[i].cant+"' class='form-control' ></td>"+
+                                       "<td >"+carro[i].nom+"</td>"+
+                                       "<td >"+carro[i].stock+"</td>"+
+                                       "<td >"+carro[i].preci+"</td>"+
+                                       "<td >"+carro[i].costo+"</td>"+
+                                       "<td><a href='#' onclick='BorrarProducto("+i+")' ><i class='fas fa-trash-alt'></i></a></td>"+
+                                       "</tr>");
+     
+    
+    }
+    }
+
+function BorrarProducto(id){
+	carro.splice(id,1);
+	ListarProductos();
+}
+
+$("#table tbody ").click(function(){
+	
+	var r =$(this).find("input").keyup(function(){
+		var n= $(this).val();
+		var id = $(this).attr("id");
+		var np = $("table tbody tr").eq(id).find("td").eq(4).html();
+		var pp=parseFloat(n)*parseFloat(np);
+		$("table tbody tr").eq(id).find("td").eq(5).html(pp) ;
 		
 	});
 	
-
+	
 });
+
+var mel;
+	$("#volcartodo").click(function(){
+		
+	});
+	$("#confirmar").click(function(){
+		
+	});
+	$("#buscar").click(function(){
+		var n =$("#clienteSearch").val();
+		alert(n);
+		 n="BuscarCliente/"+n;
+		$.ajax({
+				type:'GET',
+				url:n,
+				success:function(result){
+					console.log(result);
+				},
+				error:function(){
+					console.log("nosalebuscar");
+				}
+		});
+	});
+	
 </script>
 </html>
 
