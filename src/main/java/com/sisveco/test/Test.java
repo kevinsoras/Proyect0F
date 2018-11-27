@@ -1,4 +1,4 @@
-package com.sisveco.test;
+	package com.sisveco.test;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,25 +11,26 @@ import com.sisveco.dao.RolDao;
 import com.sisveco.dao.UsuarioDao;
 import com.sisveco.daoimp.UsuarioDaoImp;
 import com.sisveco.entity.Cliente;
+import com.sisveco.entity.Usuario;
 
 public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		//ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
-        //ClienteDao dao =(ClienteDao)context.getBean("clienteDaoImp");
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+        ClienteDao dao =(ClienteDao)context.getBean("clienteDaoImp");
         //System.out.println(dao.delete(2));
         //Cliente mapa = dao.read(3);
         //System.out.println(mapa.getApell());
         
-        //List<Map<String,Object>> listacli = dao.readAll();
+        List<Map<String,Object>> listacli = dao.readAll();
         
-        //System.out.println(listacli.size());
-  //      for(Map<String,Object> map : listacli) {
-//        	System.out.println(map.get("nom"));
-		//}
-	
+        System.out.println(listacli.size());
+      for(Map<String,Object> map : listacli) {
+        	System.out.println(map.get("nom"));
+		}
+		//pruebausuario();
 	}
 	public static void pruebarol() {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
@@ -42,5 +43,18 @@ public class Test {
         for(Map<String,Object> map:listarol) {
         	System.out.println(map.get("nombre"));
         }
+	}
+	public static void pruebausuario() {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+		UsuarioDao uao = (UsuarioDao)context.getBean("usuarioDaoImp");
+		//Usuario mape = uao.read(10);
+		//System.out.println(mape.getUsu());
+		List<Map<String,Object>> listau = uao.readAll();
+		System.out.println(listau.size());
+		for(Map<String,Object> mape : listau) {
+			System.out.println(mape.get("usu"));
+			System.out.println(mape.get("pasw"));
+			System.out.println(mape.get("idusu"));
+		}
 	}
 }

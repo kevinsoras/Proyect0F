@@ -33,6 +33,7 @@
 			<div>
 				<form>
 					<div class="form-row">
+
 						<div class="form-group col-md-6">
 							<label for="inputEmail4">Nombre</label> <input type="text"
 								class="form-control" id="inputEmail4"
@@ -45,57 +46,38 @@
 							placeholder="Coloque el apellido">
 					</div>
 					<div class="form-group">
-						<label for="inputAddress">Dni</label> <input type="number"
-							class="form-control" id="inputAddress" placeholder="Maximo 8 NÂ°">
+						<label for="inputAddress">Direccion</label> <input type="text"
+							class="form-control" id="inputAddress2" placeholder="Direccion">
+						
+						<!-- <input type="number"
+							class="form-control" id="inputAddress" placeholder="Maximo 8 N°"> -->
 					</div>
 					<div class="form-group">
-						<label for="inputAddress2">Direccion</label> <input type="text"
-							class="form-control" id="inputAddress2" placeholder="Direccion">
+						<label for="inputAddress2">Celular</label> <input type="text"
+							class="form-control" id="inputAddress2" placeholder="Celular">
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputCity">Celular</label> <input type="number"
-								placeholder="Maximo 9 NÂ°" class="form-control" id="inputCity">
+							<label for="inputCity">Rol</label><input type="text"
+							class="form-control" id="inputAddress2" placeholder="Rol">
+							 <!-- <input type="number"
+								placeholder="Maximo 9 NÂ°" class="form-control" id="inputCity"> -->
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputCity">Ruc</label>
-							<form:input type="text" placeholder="Maximo 11" path="rucc"
+							<label for="inputCity">Usuario</label>
+							<input type="text" placeholder="Usuario" path="usua"
 								class="form-control" />
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputCity">Razón Social</label>
-							<form:input type="text" placeholder="Coloque razón Social"
-								path="raz_soc" class="form-control" />
+							<label for="inputCity">Password</label>
+							<input type="text" placeholder="Password"
+								path="pass" class="form-control" />
 						</div>
 					</div>
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label for="inputEmail4">Usuario</label> <input type="text"
-								class="form-control" id="inputEmail4"
-								placeholder="Coloque el usuario">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="inputPassword4">Contraseña</label> <input
-							type="number" class="form-control" id="inputAddress"
-							placeholder="Coloque la contraseña">
-					</div>
-					<br>
-					<div class="form-check form-check-inline">
-						<button class="form-check-input" type="checkbox"
-							id="inlineCheckbox1" value="option1" checked="">
-							<label class="form-check-label" for="inlineCheckbox1">Habilitado</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<button class="form-check-input" type="checkbox"
-							id="inlineCheckbox2" value="option2">
-							<label class="form-check-label" for="inlineCheckbox2">Deshabilitado</label>
-					</div>
-					<br> <br>
 					<button type="submit" class="btn btn-primary">Agregar</button>
 					<br> <br>
 				</form>
@@ -105,12 +87,9 @@
 							<tr>
 								<th scope="col">#</th>
 								<th scope="col">Nombre</th>
-								<th scope="col">Apellidos</th>
-								<th scope="col">DNI</th>
+								<th scope="col">Apellido</th>
 								<th scope="col">Direccion</th>
 								<th scope="col">Celular</th>
-								<th scope="col">RUC</th>
-								<th scope="col">Razón social</th>
 								<th scope="col">Usuario</th>
 								<th colspan="2">Acciones</th>
 							</tr>
@@ -119,18 +98,16 @@
 							<c:forEach items="${lista}" var="usuario">
 								<tr>
 									<th scope="row">1</th>
-									<td>${cliente.nom}</td>
-									<td>${cliente.apell}</td>
-									<td>${cliente.dni}</td>
-									<td>${cliente.direc}</td>
-									<td>${cliente.cel}</td>
-									<td>${cliente.rucc}</td>
-									<td>${cliente.raz_soc}</td>
+									<td>${usuario.nombr}</td>
+									<td>${usuario.apell}</td>
+									<td>${usuario.direc}</td>
+									<td>${usuario.cel}</td>
 									<td>${usuario.usu}</td>
-									<td><a id="modal" href="read/${cliente.idcli}"
+									<td>${usuario.estado}</td>
+									<td><a id="modal" href="read/${usuario.idusu}"
 										style="color: blue;"><i class="fa fa-pencil-square-o"
 											aria-hidden="true"></i></a></td>
-									<td><a href="del/${cliente.idcli}" style="color: red;"><i
+									<td><a href="del/${usuario.idusu}" style="color: red;"><i
 											class="fa fa-trash" aria-hidden="true"></i></a></td>
 								</tr>
 							</c:forEach>

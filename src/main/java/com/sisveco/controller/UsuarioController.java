@@ -32,7 +32,7 @@ public class UsuarioController {
 	public String Validarusuario() {
 		return "Validarusuario";
 	}
-	@GetMapping("/{id}")
+	
 	public ModelAndView main1(Model model, HttpServletRequest request) {
 		System.out.println(request.getParameter("user") + " / " + request.getParameter("password"));
 		HttpSession httpSession = request.getSession();
@@ -63,24 +63,30 @@ public class UsuarioController {
 		return ma;
 	}
 	@GetMapping("/UsuarioLista")
-	public ModelAndView ListarCliente(Model mo) {
+	public ModelAndView ListarUsuario(Model mo) {
 		ModelAndView ma = new ModelAndView();
 		ma.setViewName("Registrarusuario");
-		mo.addAttribute("modal",true);
+		mo.addAttribute("modal",false);
 		ma.addObject("lista",usi.readAll());
 		ma.addObject("usuario",new Usuario());
+		ma.addObject("usuarioCrear",new Usuario());
 		return ma;
 	}
 	@GetMapping("/UsuarioListatrue")
-	public ModelAndView ListarTrueCliente( @RequestParam("idusuario") int id ,Model model) {
+	public ModelAndView ListarTrueUsuario( @RequestParam("idusuario") int id ,Model model) {
 		ModelAndView ma = new ModelAndView();
 		Usuario u = usi.read(id);
-		System.out.println(u.getApell());
 		ma.setViewName("Registrarusuario");
 		ma.addObject("usuario",u);
 		ma.addObject("modal",true);
 		ma.addObject("lista",usi.readAll());
+		ma.addObject("usuarioCrear",new Usuario());
 		model.addAttribute("nom", u.getNombr());
+		model.addAttribute("apell", u.getApell());
+		model.addAttribute("dni", u.getDirec());
+		model.addAttribute("direc", u.getCel());
+		model.addAttribute("cel", u.getIdusu());
+		model.addAttribute("rucc", u.getPasw());
 		return ma;
 	}
 	@GetMapping("/del/{id}")
