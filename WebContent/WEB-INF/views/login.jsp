@@ -26,24 +26,21 @@
 		<div class="card card-login mx-auto mt-5">
 			<div class="card-header">Login</div>
 			<div class="card-body">
-				<form>
-					<div class="form-group">
+				<form:form method="POST" action="login"
+					modelAttribute="login">
 						<div class="form-label-group">
-							<input type="email" id="inputEmail" class="form-control"
-								placeholder="Email address" required="required"
+							<input type="email" id="user" class="form-control"
+								placeholder="Email address"
 								autofocus="autofocus"> <label for="inputEmail">Ingrese
 								su email</label>
 						</div>
-					</div>
-					<div class="form-group">
 						<div class="form-label-group">
-							<input type="password" id="inputPassword" class="form-control"
-								placeholder="Password" required="required"> <label
+							<input type="password" id="password" class="form-control"
+								placeholder="Password" > <label
 								for="inputPassword">Contraseña</label>
 						</div>
-					</div>
 					<a class="btn btn-primary btn-block" href="index.html">Entrar</a>
-				</form>
+				</form:form>
 			</div>
 		</div>
 	</div>

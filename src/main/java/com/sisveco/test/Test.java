@@ -1,5 +1,6 @@
 	package com.sisveco.test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,4 +66,9 @@ public class Test {
 			System.out.println(mape.get("nom"));
 		}
 	}
+	/*public static void login(){
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+		UsuarioDao uao = (UsuarioDao)context.getBean("usuarioDaoImp");
+		List<Map<String,Object>> listasd = uao.validarUsuario(uao.readAll());
+	}*/
 }

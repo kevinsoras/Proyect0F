@@ -86,7 +86,7 @@ public class UsuarioController {
 	@GetMapping("/del/{id}")
 	public String UsuarioDelete(Model model, @PathVariable("id") int idusuario) {
 		System.out.println("Probamos id" + idusuario);
-		usi.delete(idusuario);
+		usi.delete(idusuario);  
 		return "redirect:/usuario/UsuarioLista";
 	}
 
@@ -110,7 +110,7 @@ public class UsuarioController {
 		return "redirect:/usuario/UsuarioLista";
 	}
 	@SuppressWarnings("unchecked")
-	@PostMapping("login")
+	@PostMapping("/index")
 	public ModelAndView main1(Model model, HttpServletRequest request) {
 		System.out.println(request.getParameter("user") + " / " + request.getParameter("password"));
 		HttpSession httpSession = request.getSession();
@@ -122,10 +122,9 @@ public class UsuarioController {
 		try {
 			List<Map<String, Object>> lista = usu.validarUsuario(em);
 			if (!lista.isEmpty()) {
-				ma.setViewName("principal");
+				ma.setViewName("index");
 				for (Map<String, Object> map : lista) {
-					System.out.println(
-							map.get("ACS_ID") + "/" + map.get("EMPL_APELLIDO") + "// " + map.get("ACS_NOMBRE"));
+					System.out.println(map.get("idopcion") + "/" + map.get("apellido") + "// " + map.get("url"));
 				}
 				httpSession.setAttribute("user", em.getUsu());
 				ma.addObject("user", (String) httpSession.getAttribute("user"));

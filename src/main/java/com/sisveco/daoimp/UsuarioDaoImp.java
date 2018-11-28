@@ -91,10 +91,13 @@ public class UsuarioDaoImp implements UsuarioDao {
 
 	@Override
 	public List<Map<String, Object>> validarUsuario(Usuario e) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql= "select o.idopcion, u.usuario, u.pasword, p.nombre, p.apellido, o.nombre, o.url\r\n" + 
+				"from opcion o, usuario_opcion uo, usuario u, persona p\r\n" + 
+				"where u.usuario=? and u.pasword = ? \r\n" + 
+				"and uo.idusuario=u.idusuario\r\n" + 
+				"and u.idpersona=p.idpersona\r\n" + 
+				"and uo.idopcion=o.idopcion\r\n" + 
+				"and uo.estado = 'A'";
+		return jdbcTemplate.queryForList(sql,e.getIdusu(),e.getPasw());
 	}
-
-
-
 }
