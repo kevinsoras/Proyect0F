@@ -73,7 +73,7 @@
 						<div class="form-group row">
 							<label for="example-text-input" class="col-2 col-form-label">Rol</label>
 							<div class="col-10">
-								<form:input type="hidden" placeholder="Password" path="idroll" class="form-control"/>
+								<form:input type="hidden" id="roloculto" placeholder="Password" path="idroll" class="form-control"/>
 								<select class="form-control" id="selectrol">
 									
 								</select>
@@ -94,7 +94,6 @@
 								<th scope="col">Celular</th>
 								<th scope="col">Usuario</th>
 								<th scope="col">Rol</th>
-								<th scope="col">Estado</th>
 								<th colspan="2">Acciones</th>
 							</tr>
 						</thead>
@@ -108,7 +107,6 @@
 									<td>${usuario.celular}</td>
 									<td>${usuario.usuario}</td>
 									<td>${usuario.nombrer}</td>
-									<td>${usuario.estado}</td>
 									<td><a id="modal" href="read/${usuario.idusuario}"
 										style="color: blue;"><i class="fa fa-pencil-square-o"
 											aria-hidden="true"></i></a></td>
@@ -169,11 +167,24 @@
 			url:n,
 			success:function(result){
 				console.log(result);
+				for(var i = 0;i<result.length;i++){
+		       		
+		          $("#selectrol").append("<option value='"+result[i].idrol+"'>"+result[i].nombre+"</option>");
+		    
+		   			 }
+				
+				
+				
 			},
 			error:function(){
 				console.log("nosalebuscar");
 			}
-	});
+		});
+		$("#selectrol ").click(function(){
+			var n =$("#selectrol").val();
+			
+			$("#roloculto").val(n);
+		});
 	
 	});
 	/*

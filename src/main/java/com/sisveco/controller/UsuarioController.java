@@ -48,7 +48,7 @@ public class UsuarioController {
 			System.out.println(ma.get("nombre"));
 		}
 		
-		return m;
+		return rsi.readAll();
 	}
 	
 	
