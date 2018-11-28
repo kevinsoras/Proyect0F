@@ -35,7 +35,8 @@ public class UsuarioDaoImp implements UsuarioDao {
 	@Override
 	public int create(Usuario u) {
 		// TODO Auto-generated method stub
-		return jdbcTemplate.update("call Usuario_sp_Crear(?,?,?,?,?,?,?)", u.getNombr(),u.getApell(),u.getDirec(),u.getCel(),u.getIdroll(),u.getUsu(),u.getPasw());
+		return jdbcTemplate.update("call Usuario_sp_Crear(?,?,?,?,?,?,?)",
+				u.getNombr(),u.getApell(),u.getDirec(),u.getCel(),u.getIdroll(),u.getUsu(),u.getPasw());
 	}
 
 	@Override
@@ -47,7 +48,7 @@ public class UsuarioDaoImp implements UsuarioDao {
 	@Override
 	public int delete(int key) {
 		// TODO Auto-generated method stub
-		String sql = "update usuario set estado='0' where idusuario=?";
+		String sql = "update usuario set estado='B' where idusuario=?";
 		return jdbcTemplate.update(sql,key);
 	}
 
@@ -60,7 +61,7 @@ public class UsuarioDaoImp implements UsuarioDao {
 		Map<String,Object> out = sjc.execute(in);
 		List<Usuario> use = (List<Usuario>) out.get("usuarios");*/
 		String sql = "select * from usuario where idusuario = ?";
-		Usuario user = jdbcTemplate.queryForObject(sql, new UsuarioRowMapper(), key);
+		Usuario user = jdbcTemplate.queryForObject("call Usuario_sp_Crear(?)", new UsuarioRowMapper(), key);
 		return user;
 	}
 

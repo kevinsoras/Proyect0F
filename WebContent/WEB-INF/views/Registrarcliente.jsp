@@ -1,4 +1,4 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+w<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <spring:url value="/" var="urlRoot" />
@@ -38,53 +38,56 @@
 
 			<!-- Espacio formulario registrar cliente-->
 			<div>
-				<form:form  method="GET" action="create" modelAttribute="clienteCrear" >
+				<form:form method="GET" action="create"
+					modelAttribute="clienteCrear">
 					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label for="inputEmail4">Nombre</label> <form:input type="text"
-								class="form-control" path="nom"
-								placeholder="Coloque el nombre"/>
-						</div>
-
+						<label for="inputEmail4">Nombre</label>
+						<form:input type="text" class="form-control" path="nom"
+							placeholder="Coloque el nombre" />
 					</div>
 					<div class="form-group">
-						<label for="inputPassword4">Apellido</label> <form:input type="text"
-							class="form-control" path="apell"
-							placeholder="Coloque el apellido"/>
+						<label for="inputPassword4">Apellido</label>
+						<form:input type="text" class="form-control" path="apell"
+							placeholder="Coloque el apellido" />
 					</div>
 					<div class="form-group">
-						<label for="inputAddress">Dni</label> <form:input type="text"
-							class="form-control" path="dni" placeholder="Maximo 8 NÂ°"/>
+						<label for="inputAddress">Dni</label>
+						<form:input type="text" class="form-control" path="dni"
+							placeholder="Maximo 8 NÂ°" />
 					</div>
 					<div class="form-group">
-						<label for="inputAddress2">Direccion</label> <form:input type="text"
-							class="form-control" path="direc" placeholder="Direccion"/>
-					</div>
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label for="inputCity">Celular</label> <form:input type="text"
-								placeholder="Maximo 9 NÂ°" path="cel" class="form-control" />
-						</div>
-
+						<label for="inputAddress2">Direccion</label>
+						<form:input type="text" class="form-control" path="direc"
+							placeholder="Direccion" />
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputCity">Ruc</label> <form:input type="text"
-								placeholder="Maximo 11" path="rucc" class="form-control" />
+							<label for="inputCity">Celular</label>
+							<form:input type="text" placeholder="Maximo 9 NÂ°" path="cel"
+								class="form-control" />
 						</div>
 
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<label for="inputCity">Razón Social</label> <form:input type="text"
-								placeholder="Coloque razón Social" path="raz_soc" class="form-control" />
+							<label for="inputCity">Ruc</label>
+							<form:input type="text" placeholder="Maximo 11" path="rucc"
+								class="form-control" />
+						</div>
+
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="inputCity">Razón Social</label>
+							<form:input type="text" placeholder="Coloque razón Social"
+								path="raz_soc" class="form-control" />
 						</div>
 
 					</div>
 					<br>
 					<button type="submit" class="btn btn-primary">Agregar</button>
 
-					
+
 
 				</form:form>
 
@@ -143,68 +146,60 @@
 									</button>
 								</div>
 								<form:form method="GET" action="upd" modelAttribute="cliente">
-								<div class="modal-body">
-											
-									
-										
-											<div class="form-group row">
-												<label  class="col-sm-2 col-form-label">Nombre:</label>
-												<div class="col-sm-10">
-													<form:input type="text" class="form-control"
-														path="nom"/>
-													<form:input type="hidden" class="form-control"
-														path="idcli"/>
-												</div>
+									<div class="modal-body">
+
+
+
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Nombre:</label>
+											<div class="col-sm-10">
+												<form:input type="text" class="form-control" path="nom" />
+												<form:input type="hidden" class="form-control" path="idcli" />
 											</div>
-											<div class="form-group row">
-												<label  class="col-sm-2 col-form-label">Apellidos:</label>
-												<div class="col-sm-10">
-													<form:input type="text" class="form-control"
-														path="apell"/>
-												</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Apellidos:</label>
+											<div class="col-sm-10">
+												<form:input type="text" class="form-control" path="apell" />
 											</div>
-											<div class="form-group row">
-												<label  class="col-sm-2 col-form-label">Dni:</label>
-												<div class="col-sm-10">
-													<form:input type="text" class="form-control"
-														path="dni"/>
-												</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Dni:</label>
+											<div class="col-sm-10">
+												<form:input type="text" class="form-control" path="dni" />
 											</div>
-											<div class="form-group row">
-												<label  class="col-sm-2 col-form-label">Direccion:</label>
-												<div class="col-sm-10">
-													<form:input type="text" class="form-control"
-														path="direc"/>
-												</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Direccion:</label>
+											<div class="col-sm-10">
+												<form:input type="text" class="form-control" path="direc" />
 											</div>
-											<div class="form-group row">
-												<label  class="col-sm-2 col-form-label">Celular:</label>
-												<div class="col-sm-10">
-													<form:input type="text" class="form-control"
-														path="cel"/>
-												</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Celular:</label>
+											<div class="col-sm-10">
+												<form:input type="text" class="form-control" path="cel" />
 											</div>
-											<div class="form-group row">
-												<label  class="col-sm-2 col-form-label">Ruc:</label>
-												<div class="col-sm-10">
-													<form:input type="text" class="form-control"
-														path="rucc"/>
-												</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Ruc:</label>
+											<div class="col-sm-10">
+												<form:input type="text" class="form-control" path="rucc" />
 											</div>
-											<div class="form-group row">
-												<label  class="col-sm-2 col-form-label">Razón Social:</label>
-												<div class="col-sm-10">
-													<form:input type="text" class="form-control"
-														path="raz_soc"/>
-												</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-2 col-form-label">Razón Social:</label>
+											<div class="col-sm-10">
+												<form:input type="text" class="form-control" path="raz_soc" />
 											</div>
-								</div>
-								<div class="modal-footer">
-									
-										<a href="ClienteLista" class="btn btn-success" >Close</a>
-										<input type="submit" class="btn btn-primary" value="Guardar">
-										
-								</div>
+										</div>
+									</div>
+									<div class="modal-footer">
+
+										<a href="ClienteLista" class="btn btn-success">Close</a> <input
+											type="submit" class="btn btn-primary" value="Guardar">
+
+									</div>
 								</form:form>
 							</div>
 						</div>
@@ -248,8 +243,11 @@
 <script src="${urlrecursos}/datatables/jquery.dataTables.js"></script>
 <script src="${urlrecursos}/datatables/dataTables.bootstrap4.js"></script>
 <script>
-	var modal = ${modal}
-	
+	var modal = $
+	{
+		modal
+	}
+
 	$(function() {
 
 		if (modal === true) {

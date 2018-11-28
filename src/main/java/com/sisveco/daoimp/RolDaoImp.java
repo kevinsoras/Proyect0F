@@ -54,6 +54,7 @@ public class RolDaoImp implements RolDao {
 	@Override
 	public List<Map<String, Object>> readAll() {
 		// TODO Auto-generated method stub
+		/*
 		SimpleJdbcCall sjc = new SimpleJdbcCall(jdbcTemplate).withProcedureName("Rol_sp_Mostrar").returningResultSet("roles", new RolRowMapper());
 		Map<String, Object> out = sjc.execute();
 		System.out.println();
@@ -65,7 +66,8 @@ public class RolDaoImp implements RolDao {
 			Map<String,Object> maper = om.convertValue(ro, Map.class);
 			list.add(maper);
 		}
-		return list;
+		*/
+		return jdbcTemplate.queryForList("call Rol_sp_Mostrar()");
 		//return this.jdbcTemplate.queryForList("select * from rol");
 	}
 }

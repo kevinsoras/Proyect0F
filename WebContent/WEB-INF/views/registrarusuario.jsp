@@ -33,52 +33,55 @@
 			<div>
 				<form:form method="GET" action="create"
 					modelAttribute="usuarioCrear">
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label for="inputEmail4">Nombre</label> <input type="text"
-								class="form-control" path="nombr"
-								placeholder="Coloque el nombre">
+					<div>
+						<div class="form-group row">
+							<label for="example-text-input" class="col-2 col-form-label">Nombre</label>
+							<div class="col-10">
+								<form:input class="form-control" type="text" placeholder="Ingrese Nombre" path ="nombr"/>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="inputPassword4">Apellido</label> <input type="text"
-							class="form-control" path="apell"
-							placeholder="Coloque el apellido">
-					</div>
-					<div class="form-group">
-						<label for="inputAddress">Direccion</label> <input type="text"
-							class="form-control" path="direc" placeholder="Direccion">
-
-						<!-- <input type="number"
-							class="form-control" id="inputAddress" placeholder="Maximo 8 N°"> -->
-					</div>
-					<div class="form-group">
-						<label for="inputAddress2">Celular</label> <input type="text"
-							class="form-control" path="cel" placeholder="Celular">
-					</div>
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label for="inputCity">Rol</label><input type="text"
-								class="form-control" path="idroll" placeholder="Rol">
-							<!-- <input type="number"
-								placeholder="Maximo 9 NÂ°" class="form-control" id="inputCity"> -->
+						<div class="form-group row">
+							<label for="example-text-input" class="col-2 col-form-label">Apellido</label>
+							<div class="col-10">
+									<form:input type="text" class="form-control" path="apell" placeholder="Coloque el apellido"/>
+							</div>
 						</div>
-					</div>
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label for="inputCity">Usuario</label> <input type="text"
-								placeholder="Usuario" path="usu" class="form-control" />
+						<div class="form-group row">
+							<label for="example-text-input" class="col-2 col-form-label">Dirección</label>
+							<div class="col-10">
+								 <form:input type="text" class="form-control" path="direc" placeholder="Direccion"/>
+							</div>
 						</div>
-					</div>
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label for="inputCity">Password</label> <input type="text"
-								placeholder="Password" path="pasw" class="form-control" />
+						<div class="form-group row">
+							<label for="example-text-input" class="col-2 col-form-label">Celular</label>
+							<div class="col-10">
+								<form:input type="text" class="form-control" path="cel" placeholder="Celular"/>
+							</div>
 						</div>
+						<div class="form-group row">
+							<label for="example-text-input" class="col-2 col-form-label">Usuario</label>
+							<div class="col-10">
+								 <form:input type="text" placeholder="Usuario" path="usu" class="form-control" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="example-text-input" class="col-2 col-form-label">Password</label>
+							<div class="col-10">
+								<form:input type="text" placeholder="Password" path="pasw" class="form-control" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="example-text-input" class="col-2 col-form-label">Rol</label>
+							<div class="col-10">
+								<form:input type="hidden" placeholder="Password" path="idroll" class="form-control"/>
+								<select class="form-control" id="selectrol">
+									
+								</select>
+							</div>
+						</div>
+						
 					</div>
 					<button type="submit" class="btn btn-primary">Agregar</button>
-					<br>
-					<br>
 				</form:form>
 				<div>
 					<table class="table table-bordered">
@@ -90,6 +93,7 @@
 								<th scope="col">Direccion</th>
 								<th scope="col">Celular</th>
 								<th scope="col">Usuario</th>
+								<th scope="col">Rol</th>
 								<th scope="col">Estado</th>
 								<th colspan="2">Acciones</th>
 							</tr>
@@ -103,6 +107,7 @@
 									<td>${usuario.direccion}</td>
 									<td>${usuario.celular}</td>
 									<td>${usuario.usuario}</td>
+									<td>${usuario.nombrer}</td>
 									<td>${usuario.estado}</td>
 									<td><a id="modal" href="read/${usuario.idusuario}"
 										style="color: blue;"><i class="fa fa-pencil-square-o"
@@ -126,7 +131,7 @@
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
-										</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -148,23 +153,28 @@
 <!-- Core plugin JavaScript-->
 <script src="${urlrecursos}/jquery-easing/jquery.easing.min.js"></script>
 <!-- Page level plugin JavaScript-->
-<script src="${urlrecursos}/chart.js/Chart.min.js"></script>
 <script src="${urlrecursos}/datatables/jquery.dataTables.js"></script>
 <script src="${urlrecursos}/datatables/dataTables.bootstrap4.js"></script>
 <script>
-	var modal = $
-	{
-		modal
-	}
+	var modal = false;
 
 	$(function() {
-
+		/*
 		if (modal === true) {
-
 			$("#exampleModale").modal("show");
-
-		}
-
+		}*/
+		var n='roles';
+		$.ajax({
+			type:'GET',
+			url:n,
+			success:function(result){
+				console.log(result);
+			},
+			error:function(){
+				console.log("nosalebuscar");
+			}
+	});
+	
 	});
 	/*
 	 $(function(){
