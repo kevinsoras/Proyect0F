@@ -26,8 +26,7 @@
 		<div class="card card-login mx-auto mt-5">
 			<div class="card-header">Login</div>
 			<div class="card-body">
-				<form:form method="POST" action="login"
-					modelAttribute="login">
+				<form:form method="POST" action="usuario/validar">
 						<div class="form-label-group">
 							<input type="email" id="user" class="form-control"
 								placeholder="Email address"
@@ -39,7 +38,7 @@
 								placeholder="Password" > <label
 								for="inputPassword">Contraseña</label>
 						</div>
-					<a class="btn btn-primary btn-block" href="index.html">Entrar</a>
+					<a class="btn btn-primary btn-block" >Entrar</a>
 				</form:form>
 			</div>
 		</div>

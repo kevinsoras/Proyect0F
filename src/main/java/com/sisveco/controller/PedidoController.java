@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sisveco.entity.Cliente;
 import com.sisveco.entity.Producto;
 import com.sisveco.serviceImp.ClienteServiceImp;
+import com.sisveco.serviceImp.DetalleServiceImp;
+import com.sisveco.serviceImp.PedidoServiceImp;
 import com.sisveco.serviceImp.ProductoServiceImp;
 
 @Controller
@@ -26,7 +28,10 @@ public class PedidoController {
 private ProductoServiceImp psi;
 @Autowired
 private ClienteServiceImp csi;
-
+@Autowired 
+private PedidoServiceImp pedidosi;
+@Autowired
+private DetalleServiceImp detallesi;
 
 
 @GetMapping("/RegistrarPedidoventa")

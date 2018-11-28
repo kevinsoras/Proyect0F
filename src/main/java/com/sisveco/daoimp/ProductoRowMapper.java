@@ -11,7 +11,7 @@ public class ProductoRowMapper implements RowMapper<Producto>{
 	public Producto mapRow(ResultSet rs, int rowNum) throws SQLException {
 		// TODO Auto-generated method stub
 		Producto o = new Producto();
-		o.setCant(rs.getInt("idproducto"));
+		o.setIdprod(rs.getInt("idproducto"));
 		o.setIdcat(rs.getInt("idcategoria"));
 		o.setNom(rs.getString("nombre"));
 		o.setPreci(rs.getDouble("precio"));

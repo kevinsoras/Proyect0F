@@ -110,7 +110,7 @@ public class UsuarioController {
 		return "redirect:/usuario/UsuarioLista";
 	}
 	@SuppressWarnings("unchecked")
-	@PostMapping("/index")
+	@PostMapping("/validar")
 	public ModelAndView main1(Model model, HttpServletRequest request) {
 		System.out.println(request.getParameter("user") + " / " + request.getParameter("password"));
 		HttpSession httpSession = request.getSession();

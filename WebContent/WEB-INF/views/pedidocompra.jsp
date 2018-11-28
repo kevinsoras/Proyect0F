@@ -3,6 +3,7 @@
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <spring:url value="/" var="urlRoot" />
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -123,27 +124,27 @@
   </div>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name="tipo" id="Contado" value="Contado" checked>
-  <label class="form-check-label" for="inlineRadio2">Contado</label>
+  <label class="form-check-label" for="Contado">Contado</label>
 </div>
 
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="tipo" id="inlineRadio2" value="option2">
-  <label class="form-check-label" for="inlineRadio2">Credito</label>
+  <input class="form-check-input" type="radio" name="tipo" id="Credito" value="Credito">
+  <label class="form-check-label" for="Credito">Credito</label>
 </div>
 
 <br><br>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="documento" id="inlineRadio2" value="option2" checked>
-  <label class="form-check-label" for="inlineRadio2">Proforma</label>
+  <input class="form-check-input" type="radio" name="documento" id="Proforma" value="Proforma" checked>
+  <label class="form-check-label" for="Proforma">Proforma</label>
 </div>
 
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="documento" id="inlineRadio2" value="option2">
-  <label class="form-check-label" for="inlineRadio2">Boleta</label>
+  <input class="form-check-input" type="radio" name="documento" id="Boleta" value="Boleta">
+  <label class="form-check-label" for="Boleta">Boleta</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="documento" id="inlineRadio2" value="option2">
-  <label class="form-check-label" for="inlineRadio2">Factura</label>
+  <input class="form-check-input" type="radio" name="documento" id="Factura" value="Factura">
+  <label class="form-check-label" for="Factura">Factura</label>
 </div>
 <br>
 <button type="button" class="btn btn-info">Registrar</button>
@@ -216,6 +217,7 @@ $(function() {
 		$.ajax({type:'GET',
 				url:mel ,
 				success:function(result){
+					console.log(result);
 					for (var i = 0; i <carro.length; i++) {
 				        if(result.nom===carro[i].nom){
 				            valor=false;
@@ -261,7 +263,8 @@ function ListarProductos(){
                                        "<td >"+carro[i].stock+"</td>"+
                                        "<td >"+carro[i].preci+"</td>"+
                                        "<td >"+carro[i].costo+"</td>"+
-                                       "<td><a href='#' onclick='BorrarProducto("+i+")' ><i class='fas fa-trash-alt'></i></a></td>"+
+                                       "<td><a href='#' onclick='BorrarProducto("+i+")' ><i class='fas fa-trash-alt'></i></a>"+
+                                       		"<input type='text' value='"+carro[i].idprod+"'></td>"+
                                        "</tr>");
      
     
@@ -287,13 +290,42 @@ $("#table tbody ").click(function(){
 	
 });
 
-var mel;
+var carroenvio = new Array();;
 	$("#volcartodo").click(function(){
 		
 	});
 	$("#confirmar").click(function(){
-		alert($('input:checkbox[name=colorfavorito]:checked').val());
-		alert($('input:checkbox[name=colorfavorito]:checked').val());
+		var tipo=$('input:radio[name=tipo]:checked').val();
+		var pdocu=$('input:radio[name=documento]:checked').val();
+		var arrayCol1 = new Array();
+		var tamano=$("#table tbody tr").length;
+		$("#table tbody tr").each(function(){
+			var ob = new Object();
+			
+			var cantidad = $(this).find("td").eq(1).find("input").val();
+			var descripcion = $(this).find("td").eq(2).html();
+			var stock = $(this).find("td").eq(3).html();
+			var costo = $(this).find("td").eq(4).html();
+			var total = $(this).find("td").eq(5).html();
+			var idproducto = $(this).find("td").eq(6).find("input").val();
+			
+			ob.cantidad=cantidad;
+			ob.descripcion=descripcion;
+			ob.stock=stock;
+			ob.costo=costo;
+			ob.total=ob.total;
+			ob.idproducto=ob.idproducto;
+			
+			carroenvio.push(ob);
+			console.log(carroenvio);
+			
+			$.ajax({
+				
+			});
+		});
+		
+		
+		
 	});
 	$("#buscar").click(function(){
 		var n =$("#clienteSearch").val();

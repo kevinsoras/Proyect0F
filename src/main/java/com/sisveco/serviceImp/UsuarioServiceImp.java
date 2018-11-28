@@ -41,4 +41,10 @@ public class UsuarioServiceImp implements UsuarioService{
 		return usuariodao.readAll();
 		// TODO Auto-generated method stub
 	}
+
+	@Override
+	public List<Map<String, Object>> validarUsuario(Usuario e) {
+		// TODO Auto-generated method stub
+		return usuariodao.validarUsuario(e);
+	}
 }
