@@ -41,6 +41,7 @@ public ModelAndView ListarProducto() {
 	return ma;
 }
 
+
 @GetMapping("/Listapedidoproductos/{id}")
 @ResponseBody
 public Producto ListadoProductos(@PathVariable(value="id") int id){
@@ -50,16 +51,9 @@ public Producto ListadoProductos(@PathVariable(value="id") int id){
 @GetMapping("/BuscarCliente/{ingreso}")
 @ResponseBody
 public List<Map<String,Object>> BuscarClientes(@PathVariable(value="ingreso") String key) {
-	System.out.println("key"+key);
-	String llave =(String)key;
-	List<Map<String,Object>> mas = csi.Search(llave);
-	System.out.println(mas.size());
-	for(Map<String,Object> ma : mas ) {
-		System.out.println(ma.get("dni"));
-	}
 	
 	
-	return csi.Search(llave);
+	return csi.Search(key);
 }
 
 @GetMapping("/IngresarProducto")

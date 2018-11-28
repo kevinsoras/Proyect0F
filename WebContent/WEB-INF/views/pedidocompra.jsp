@@ -99,38 +99,50 @@
  
   <div class="form-group">
     <label for="inputPassword4">Apellido</label>
-    <input type="text" class="form-control" id="apellidoSeach" placeholder="Coloque el apellido">
+    <input type="text" class="form-control" id="apellidoSearch" placeholder="Coloque el apellido">
   </div>
   <div class="form-group">
     <label for="inputAddress">Celular</label>
-    <input type="number" class="form-control" id="celularSearh" placeholder="Maximo 9 N°">
+    <input type="text" class="form-control" id="celularSearch" placeholder="Maximo 9 N°">
   </div>
   <div class="form-group">
     <label for="inputAddress">Dni</label>
-    <input type="number" class="form-control" id="Dnisearch" placeholder="Maximo 8 N°">
+    <input type="text" class="form-control" id="dniSearch" placeholder="Maximo 8 N°">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Direccion</label>
+    <input type="text" class="form-control" id="direccionSearch" placeholder="Maximo 8 N°">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Ruc</label>
+    <input type="text" class="form-control" id="rucSearch" placeholder="Maximo 8 N°">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Razon_social</label>
+    <input type="text" class="form-control" id="razon_socialSearch" placeholder="Maximo 8 N°">
   </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked>
+  <input class="form-check-input" type="radio" name="tipo" id="Contado" value="Contado" checked>
   <label class="form-check-label" for="inlineRadio2">Contado</label>
 </div>
 
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <input class="form-check-input" type="radio" name="tipo" id="inlineRadio2" value="option2">
   <label class="form-check-label" for="inlineRadio2">Credito</label>
 </div>
 
 <br><br>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked>
+  <input class="form-check-input" type="radio" name="documento" id="inlineRadio2" value="option2" checked>
   <label class="form-check-label" for="inlineRadio2">Proforma</label>
 </div>
 
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <input class="form-check-input" type="radio" name="documento" id="inlineRadio2" value="option2">
   <label class="form-check-label" for="inlineRadio2">Boleta</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <input class="form-check-input" type="radio" name="documento" id="inlineRadio2" value="option2">
   <label class="form-check-label" for="inlineRadio2">Factura</label>
 </div>
 <br>
@@ -280,7 +292,8 @@ var mel;
 		
 	});
 	$("#confirmar").click(function(){
-		
+		alert($('input:checkbox[name=colorfavorito]:checked').val());
+		alert($('input:checkbox[name=colorfavorito]:checked').val());
 	});
 	$("#buscar").click(function(){
 		var n =$("#clienteSearch").val();
@@ -290,7 +303,13 @@ var mel;
 				type:'GET',
 				url:n,
 				success:function(result){
-					console.log(result);
+					$("#clienteSearch").val(result[0].nombre);
+					$("#apellidoSearch").val(result[0].apellido);
+					$("#celularSearch").val(result[0].celular);
+					$("#dniSearch").val(result[0].dni);
+					$("#direccionSearch").val(result[0].direccion);
+					$("#rucSearch").val(result[0].ruc);
+					$("#razon_socialSearch").val(result[0].razon_social);
 				},
 				error:function(){
 					console.log("nosalebuscar");
