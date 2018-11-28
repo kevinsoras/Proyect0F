@@ -112,15 +112,18 @@ public class UsuarioController {
 	@SuppressWarnings("unchecked")
 	@PostMapping("/index")
 	public ModelAndView main1(Model model, HttpServletRequest request) {
-		System.out.println(request.getParameter("user") + " / " + request.getParameter("password"));
 		HttpSession httpSession = request.getSession();
 		String user = request.getParameter("user");
 		String password = request.getParameter("password");
-		Usuario em = new Usuario(1, user, password);
-		UsuarioDao usu = new UsuarioDaoImp();
+		Usuario em = new Usuario(1,user,password);
 		ModelAndView ma = new ModelAndView();
+		//System.out.println(request.getParameter("user") + " / " + request.getParameter("password"));
 		try {
-			List<Map<String, Object>> lista = usu.validarUsuario(em);
+			List<Map<String, Object>> lista = usi.validarUsuario(em);
+			for (Map<String, Object> map : lista) {
+				System.out.println(map.get("idopcion") + "/" + map.get("apellido") + "// " + map.get("url"));
+			}
+			System.out.println("Llega hasta aqui bb");
 			if (!lista.isEmpty()) {
 				ma.setViewName("index");
 				for (Map<String, Object> map : lista) {

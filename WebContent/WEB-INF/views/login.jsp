@@ -1,6 +1,7 @@
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <spring:url value="/" var="urlRoot" />
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -26,21 +27,20 @@
 		<div class="card card-login mx-auto mt-5">
 			<div class="card-header">Login</div>
 			<div class="card-body">
-				<form:form method="POST" action="login"
-					modelAttribute="login">
-						<div class="form-label-group">
-							<input type="email" id="user" class="form-control"
-								placeholder="Email address"
-								autofocus="autofocus"> <label for="inputEmail">Ingrese
-								su email</label>
-						</div>
-						<div class="form-label-group">
-							<input type="password" id="password" class="form-control"
-								placeholder="Password" > <label
-								for="inputPassword">Contraseña</label>
-						</div>
-					<a class="btn btn-primary btn-block" href="index.html">Entrar</a>
-				</form:form>
+				<form method="POST" action="usuario/validar">
+					<div class="form-label-group">
+						<input type="text" name="user" class="form-control"
+							placeholder="Email address" autofocus="autofocus"> <label
+							for="inputEmail">Ingrese su Usuario</label>
+					</div>
+					<div class="form-label-group">
+						<input type="password" name="password" class="form-control"
+							placeholder="Password"> <label for="inputPassword">Contraseña</label>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary" >Ingresar</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
