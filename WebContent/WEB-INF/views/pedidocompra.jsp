@@ -96,17 +96,7 @@
     <br>
      <button type="button" class="btn btn-info" id="buscar">Buscar</button>
   </div>
-  <div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <label for="inputPassword4">Apellido</label>
-    </div>
-    <div class="col-sm">
-      <input type="text" class="form-control" id="apellidoSeach" placeholder="Coloque el apellido">
-    </div>
-   
-  </div>
-</div>
+ 
   <div class="form-group">
     <label for="inputPassword4">Apellido</label>
     <input type="text" class="form-control" id="apellidoSeach" placeholder="Coloque el apellido">

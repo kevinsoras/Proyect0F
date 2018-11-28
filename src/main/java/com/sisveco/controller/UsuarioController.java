@@ -35,7 +35,7 @@ public class UsuarioController {
 	@GetMapping("/UsuarioLista")
 	public ModelAndView ListarUsuario(Model mo) {
 		ModelAndView ma = new ModelAndView();
-		ma.setViewName("Registrarusuario");
+		ma.setViewName("registrarusuario");
 		mo.addAttribute("modal",false);
 		ma.addObject("lista",usi.readAll());
 		ma.addObject("usuario",new Usuario());
@@ -116,4 +116,4 @@ public class UsuarioController {
 	return ma;
 */
 }
-}
+

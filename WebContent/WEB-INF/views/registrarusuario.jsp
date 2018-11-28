@@ -26,7 +26,6 @@
 	<jsp:include page="template/left.jsp"></jsp:include>
 	<div id="content-wrapper" style="float: left;">
 		<div class="container-fluid">
-			<!-- Breadcrumbs-->
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">Menu</a></li>
 			</ol>
@@ -91,6 +90,7 @@
 								<th scope="col">Direccion</th>
 								<th scope="col">Celular</th>
 								<th scope="col">Usuario</th>
+								<th scope="col">Estado</th>
 								<th colspan="2">Acciones</th>
 							</tr>
 						</thead>
@@ -98,16 +98,16 @@
 							<c:forEach items="${lista}" var="usuario">
 								<tr>
 									<th scope="row">1</th>
-									<td>${usuario.nombr}</td>
-									<td>${usuario.apell}</td>
-									<td>${usuario.direc}</td>
-									<td>${usuario.cel}</td>
-									<td>${usuario.usu}</td>
+									<td>${usuario.nombre}</td>
+									<td>${usuario.apellido}</td>
+									<td>${usuario.direccion}</td>
+									<td>${usuario.celular}</td>
+									<td>${usuario.usuario}</td>
 									<td>${usuario.estado}</td>
-									<td><a id="modal" href="read/${usuario.idusu}"
+									<td><a id="modal" href="read/${usuario.idusuario}"
 										style="color: blue;"><i class="fa fa-pencil-square-o"
 											aria-hidden="true"></i></a></td>
-									<td><a href="del/${usuario.idusu}" style="color: red;"><i
+									<td><a href="del/${usuario.idusuario}" style="color: red;"><i
 											class="fa fa-trash" aria-hidden="true"></i></a></td>
 								</tr>
 							</c:forEach>
@@ -126,33 +126,7 @@
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
-								<form:form method="GET" action="upd" modelAttribute="usuario">
-								<div class="modal-body">
-											<div class="form-group row">
-												<label  class="col-sm-2 col-form-label">Usuario:</label>
-												<div class="col-sm-10">
-													<form:input type="text" class="form-control"
-														path="usu	"/>
-													<form:input type="hidden" class="form-control"
-														path="idusu"/>
-												</div>
-											</div>
-											<div class="form-group row">
-												<label  class="col-sm-2 col-form-label">Password:</label>
-												<div class="col-sm-10">
-													<form:input type="text" class="form-control"
-														path="pasw"/>
-												</div>
-											</div>
-								</div>
-								<div class="modal-footer">
-									
-										<a href="UsuarioLista" class="btn btn-success" >Close</a>
-										<input type="submit" class="btn btn-primary" value="Guardar">
-										
-								</div>
-								</form:form>
-							</div>
+										</div>
 						</div>
 					</div>
 				</div>

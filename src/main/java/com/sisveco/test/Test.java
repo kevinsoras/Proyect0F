@@ -24,7 +24,7 @@ public class Test {
         //Cliente mapa = dao.read(3);
         //System.out.println(mapa.getApell());
         
-<<<<<<< HEAD
+
         List<Map<String,Object>> listacli = dao.Search("10");
         
         System.out.println(listacli.size());
@@ -32,15 +32,14 @@ public class Test {
         	System.out.println(map.get("nombre"));
 		}
 	
-=======
-        List<Map<String,Object>> listacli = dao.readAll();
+
+        List<Map<String,Object>> listaclis = dao.readAll();
         
         System.out.println(listacli.size());
       for(Map<String,Object> map : listacli) {
         	System.out.println(map.get("nom"));
 		}
 		pruebausuario();
->>>>>>> 54a4b64d31f815540834689e3ce503d7116a0545
 	}
 	public static void pruebarol() {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");

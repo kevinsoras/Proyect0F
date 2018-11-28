@@ -139,7 +139,7 @@
                   </div>
                   <div class="mr-5">Registrar Usuario</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="usuario/UsuarioLista.html">
+                <a class="card-footer text-white clearfix small z-1" href="usuario/UsuarioLista">
                   <span class="float-left">Ver Detalles</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
