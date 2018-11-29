@@ -123,7 +123,6 @@ public class UsuarioController {
 			for (Map<String, Object> map : lista) {
 				System.out.println(map.get("idopcion") + "/" + map.get("apellido") + "// " + map.get("url"));
 			}
-			System.out.println("Llega hasta aqui bb");
 			if (!lista.isEmpty()) {
 				ma.setViewName("index");
 				for (Map<String, Object> map : lista) {

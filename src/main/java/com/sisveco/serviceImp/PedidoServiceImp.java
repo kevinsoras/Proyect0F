@@ -7,12 +7,11 @@ import com.sisveco.entity.Pedido;
 import com.sisveco.service.PedidoService;
 @Service
 public class PedidoServiceImp implements PedidoService {
-	@Autowired 
-	private PedidoDao pedidodao;
+	
 	@Override
 	public int create(Pedido p) {
 		// TODO Auto-generated method stub
-		return pedidodao.create(p);
+		return 0; //pedidodao.create(p);
 	}
 
 }

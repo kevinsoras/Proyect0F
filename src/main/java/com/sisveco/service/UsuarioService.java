@@ -13,9 +13,5 @@ public interface UsuarioService {
 	 public int delete(int id);
 	 public Usuario read(int id);
 	 public List<Map<String,Object>> readAll();
-<<<<<<< HEAD
 	 public List<Map<String, Object>> validarUsuario(Usuario e);
-=======
-	 List<Map<String, Object>> validarUsuario(Usuario e);
->>>>>>> 653df11eb30914c817442432e902425e9b215671
 }

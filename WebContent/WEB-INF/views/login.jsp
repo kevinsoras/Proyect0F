@@ -27,22 +27,6 @@
 		<div class="card card-login mx-auto mt-5">
 			<div class="card-header">Login</div>
 			<div class="card-body">
-<<<<<<< HEAD
-				<form:form method="POST" action="usuario/validar">
-						<div class="form-label-group">
-							<input type="email" id="user" class="form-control"
-								placeholder="Email address"
-								autofocus="autofocus"> <label for="inputEmail">Ingrese
-								su email</label>
-						</div>
-						<div class="form-label-group">
-							<input type="password" id="password" class="form-control"
-								placeholder="Password" > <label
-								for="inputPassword">Contraseña</label>
-						</div>
-					<a class="btn btn-primary btn-block" >Entrar</a>
-				</form:form>
-=======
 				<form method="POST" action="usuario/validar">
 					<div class="form-label-group">
 						<input type="text" name="user" class="form-control"
@@ -57,7 +41,6 @@
 						<button type="submit" class="btn btn-primary" >Ingresar</button>
 					</div>
 				</form>
->>>>>>> 653df11eb30914c817442432e902425e9b215671
 			</div>
 		</div>
 	</div>

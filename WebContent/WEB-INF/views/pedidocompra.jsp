@@ -318,10 +318,21 @@ var carroenvio = new Array();;
 			
 			carroenvio.push(ob);
 			console.log(carroenvio);
-			
-			$.ajax({
-				
+			/*
+			$.ajax({type:'GET',
+					contentType:"aplication/json",
+					url:"CrearPedidoventa",
+					data:JSON.stringify(carroenvio),
+					datatype:'json',
+					success:function(){
+						console.log(" crea pedido");
+					},
+					error:function(){
+						console.log("no creó");
+					}
+						
 			});
+			*/
 		});
 		
 		
@@ -331,6 +342,7 @@ var carroenvio = new Array();;
 		var n =$("#clienteSearch").val();
 		alert(n);
 		 n="BuscarCliente/"+n;
+		 
 		$.ajax({
 				type:'GET',
 				url:n,
@@ -347,6 +359,7 @@ var carroenvio = new Array();;
 					console.log("nosalebuscar");
 				}
 		});
+		 
 	});
 	
 </script>

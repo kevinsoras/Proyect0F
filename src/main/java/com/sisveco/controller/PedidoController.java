@@ -28,10 +28,6 @@ public class PedidoController {
 private ProductoServiceImp psi;
 @Autowired
 private ClienteServiceImp csi;
-@Autowired 
-private PedidoServiceImp pedidosi;
-@Autowired
-private DetalleServiceImp detallesi;
 
 
 @GetMapping("/RegistrarPedidoventa")
@@ -45,7 +41,6 @@ public ModelAndView ListarProducto() {
 	
 	return ma;
 }
-
 
 @GetMapping("/Listapedidoproductos/{id}")
 @ResponseBody

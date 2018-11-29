@@ -199,10 +199,6 @@
 
     </div>
 
-<c:forEach items="${lista3}" var="usuario">
-				<li><a class="app-menu__item" href="${usuario.url}"><span
-						class="app-menu__label"> ${usuario.nombre} </span></a> <!-- id="${user.ACS_ID}"  <a  href="upd/${user.ACS_ID}"> Hola </a>--></li>
-			</c:forEach>
 </body>
 <script src="${urlrecursos}/jquery/jquery.min.js"></script>
 <script src="${urlrecursos}/bootstrap/js/bootstrap.bundle.min.js"></script>
